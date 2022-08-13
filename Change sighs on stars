@@ -1,0 +1,5 @@
+const getHiddenCard = (x, y = 4) => {
+const cutF = x.slice(12,16);
+const cutV = '*'.repeat(y);
+return (`${cutV}${cutF}`);
+}
