@@ -1,0 +1,10 @@
+const convertText = (string) => {
+  if (string === '') {
+    return '';
+}
+  if (string[0] === string[0].toUpperCase()){
+    return string;
+} else {
+    return reverse(string);
+}
+};
