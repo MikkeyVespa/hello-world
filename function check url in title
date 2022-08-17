@@ -1,0 +1,9 @@
+const normalizeUrl = (adress) => {
+  let riwer;
+  if (adress.startsWith('https://')) {
+    riwer = adress;
+  } else {
+    riwer = `https://${adress}`;
+  }
+  return riwer;
+};
