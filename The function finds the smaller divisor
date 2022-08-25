@@ -1,0 +1,28 @@
+const smallestDivisor = (num) => {
+if (num === 1) {
+return 1;
+}
+if (num % 2 === 0) {
+return 2;
+}
+let i = 3;
+while (num % i !== 0) {
+i++;
+}
+return i;
+};
+
+VS
+
+const smallestDivisor = (num) => {
+const iter = (acc) => {
+    if (acc > num / 2) {
+      return num;
+    }
+    if (num % acc === 0) {
+      return acc;
+    }
+    return iter(acc + 1);
+  };
+  return iter(2);
+  };
