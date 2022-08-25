@@ -1,0 +1,13 @@
+const makeItFunny = (text, n) => {
+  let i = 0;
+  let result = '';
+    while (i < text.length) {
+    if ((i + 1) % n === 0) {
+      result = `${result}${text[i].toUpperCase()}`;
+     } else { 
+      result = `${result}${text[i]}`;
+     }
+      i++;
+  }
+  return result
+};
