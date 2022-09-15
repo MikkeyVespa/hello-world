@@ -1,0 +1,36 @@
+import { length, toUpperCase } from './strings.js';
+
+const bigLettersCount = (str) => {
+
+let sum = 0;
+for (let i = 0; i < length(str); i++) {
+  if (str[i] === toUpperCase(str[i])) {
+sum++;
+}
+
+} 
+  return sum;
+};
+
+
+const compare = (first, second) => {
+  const firstCount = bigLettersCount(first);
+  const secondCount = bigLettersCount(second);
+
+  if (firstCount > secondCount) {
+    return 1;
+  }
+  if (firstCount < secondCount) {
+    return (-1);
+  }
+  return 0;
+};
+
+export const greaterThan = (first, second) => (
+  compare(first, second) === 1);
+
+export const lessThan = (first, second) => (
+  compare(first, second) === -1);
+
+export const isEqual = (first, second) => (
+  compare(first, second) === 0);
