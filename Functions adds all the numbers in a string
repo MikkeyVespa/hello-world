@@ -1,0 +1,20 @@
+import { length } from './strings.js';
+
+// BEGIN (write your solution here)
+const sum = (str) => {
+  let i = null;
+  for (let g = 0; g < length(str); g++) {
+    i += Number(str[g]);
+  }
+return i;
+}
+const addDigits = (num) => {
+let res = num;
+while (res >= 10) {
+res = sum(String(res));
+}
+return res;
+}
+
+export default addDigits;
+// END
