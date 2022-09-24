@@ -1,0 +1,17 @@
+import { length, toUpperCase } from './strings.js';
+
+
+export const solution = (str) => {
+let result = '';
+  for (let i = 0; i < length(str); i++) {
+    if (str[i] === str[0].toLowerCase()) {
+      result += toUpperCase(str[i]);
+}
+    else if (str[i - 1] === ' ') {
+      result += toUpperCase(str[i]);
+    }
+    else result += str[i];
+}
+return result;
+};
+export default solution;
