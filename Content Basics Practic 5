@@ -1,0 +1,122 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/app.css">
+  <title>Hexlet Price</title>
+</head>
+<body>
+  <div class="card">
+    <h2 class="price border-bottom"><span>$149</span>/месяц</h2>
+    <h3 class="border-bottom">Что вы получите</h3>
+    <ul class="card-list border-bottom">
+      <li>Курсы (&gt; 110)</li>
+      <li>Проекты</li>
+      <li>Ревью кода</li>
+      <li>Наставник</li>
+    </ul>
+    <a href="#" class="btn btn-blue mt-1">Узнать подробности</a>
+  </div>
+</body>
+</html>
+
+
+app.css
+
+html {
+  /* BEGIN (write your solution here) */
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: sans-serif;
+  background: #1d2026;
+  color: #8a94a7;
+  /* END */
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* BEGIN (write your solution here) */
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  /* END */
+}
+
+h1,
+h2,
+h3 {
+  /* BEGIN (write your solution here) */
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  /* END */
+}
+
+ul {
+  /* BEGIN (write your solution here) */
+margin: 0;
+padding-top: 1em;
+padding-bottom: 1em; 
+  /* END */
+}
+
+/* BEGIN (write your solution here) */
+.card {
+  width: 300px;
+  padding: 2.5rem 2.5rem 2rem;
+  background: #2c3039;
+}
+
+.card-list {
+  font-size: 14px;
+}
+
+.price {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.price span {
+  color: white;
+  font-size: 3em;
+}
+
+h3 {
+  color: white;
+  font-size: 0.9em;
+}
+/* END */
+
+.btn {
+  display: block;
+  padding: 1em 0;
+
+  color: white;
+
+  /* BEGIN (write your solution here) */
+  font-size: 0.7rem;
+  /* END */
+
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.btn-blue {
+  background-color: #097dea;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.border-bottom {
+  border-bottom: 1px solid rgb(138 148 167 / 24%);
+}
