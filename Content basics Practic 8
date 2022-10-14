@@ -1,0 +1,139 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обратная связь</title>
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+  <form class="block-center form">
+    <!-- BEGIN (write your solution here) -->
+    <h1>Обратная связь</h1>
+    <div class="form-input mb-2">
+      <label for="">
+        <input type="text" placeholder="Ваше имя">
+      </label>
+    </div>
+
+    <div class="form-input mb-2">
+      <label for="">
+          <input type="text" placeholder="Ваш Email">
+      </label>
+    </div>
+
+    <div class="form-input mb-2">
+      <label for="textarrea"></label>
+        <textarea name="massage" id="textarrea" cols="30" rows="10" placeholder="Ваше сообщение"></textarea>
+    </div>
+
+    <div class="small mb-1">
+      <label for="">
+        <input type="checkbox">
+        Я принимаю правила сервиса
+      </label>
+    </div>
+    <!-- END -->
+    <button class="btn btn-green">Отправить сообщение</button>
+  </form>
+</body>
+</html>
+
+
+app.css
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+
+  font: 18px/1.5 sans-serif;
+
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.form {
+  box-sizing: border-box;
+  width: 500px;
+  padding: 30px 80px;
+
+  background: #fff;
+
+  border-radius: 7px;
+}
+
+/* BEGIN (write your solution here) */
+.form-input * {
+  width: 100%;
+  display: block;
+}
+
+.form-input input {
+  height: 50px;
+  padding: 10px 20px 10px 20px;
+  box-sizing: border-box;
+  border: 1px solid #e2e2e2;
+}
+
+textarea {
+  height: 200px;
+  resize: none;
+  padding: 10px 20px 10px 20px;
+  box-sizing: border-box;
+  border: 1px solid #e2e2e2;
+  font-size: 1rem;
+}
+/* END */
+
+.btn {
+  padding: 15px 30px;
+
+  font-weight: bold;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+.btn-green {
+  color: #fff;
+
+  background: #4caf50;
+}
+
+.block-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.mb-1 {
+  margin-bottom: 1em;
+}
+
+.mb-2 {
+  margin-bottom: 1.5em;
+}
+
+.small {
+  font-size: 14px;
+}
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  padding: 0;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  border: 0;
+}
