@@ -1,0 +1,105 @@
+app.css
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+
+  color: #1e293b;
+  font: 18px/1.5 sans-serif;
+
+  background: #f8fafc;
+}
+
+small {
+  color: #626976;
+}
+
+.notifications {
+  width: 500px;
+  height: 500px;
+  padding: 1rem;
+
+  /* BEGIN (write your solution here) */
+overflow: auto;
+  /* END */
+
+  background: #fff;
+  border: 1px solid rgb(98 105 118 / 16%);
+  box-shadow: rgb(30 41 59 / 4%) 0 2px 4px 0;
+}
+
+.notifications-item {
+  padding: 1rem 0;
+
+  border-bottom: 1px solid rgb(98 105 118 / 16%);
+}
+
+.notifications-item:last-child {
+  padding-bottom: 0;
+
+  border: none;
+}
+
+.notifications-item h3 {
+  margin: 0;
+
+  /* BEGIN (write your solution here) */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /* END */
+}
+
+.notifications-item p {
+  margin: 0;
+}
+
+
+index.html
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Компонент «Оповещения»</title>
+  <link rel="stylesheet" href="./styles/app.css">
+</head>
+<body>
+  <section class="notifications">
+    <h2>Оповещения</h2>
+    <div class="notifications-item">
+      <img src="assets/images/star.png" alt="Уведомление">
+      <div>
+        <h3>Никита Михайлов добавил новое упражнение</h3>
+        <p><small>Только что</small></p>
+      </div>
+    </div>
+    <div class="notifications-item">
+      <img src="assets/images/star.png" alt="Уведомление">
+      <div>
+        <h3>Новый комментарий от пользователя Константин Константинопольский</h3>
+        <p><small>20 минут назад</small></p>
+      </div>
+    </div>
+    <div class="notifications-item">
+      <img src="assets/images/star.png" alt="Уведомление">
+      <div>
+        <h3>В курс <strong>CSS: Позиционирование</strong> был добавлен новый урок</h3>
+        <p><small>8 часов назад</small></p>
+      </div>
+    </div>
+    <div class="notifications-item">
+      <img src="assets/images/star.png" alt="Уведомление">
+      <div>
+        <h3>В блоге новая статья</h3>
+        <p><small>вчера</small></p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
