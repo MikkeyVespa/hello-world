@@ -1,0 +1,55 @@
+index.html
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Squares</title>
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+  <div class="square-red"></div>
+  <div class="square-green"></div>
+  <div class="square-blue"></div>
+</body>
+</html>
+
+
+app.css
+
+:root {
+  --red: #f44336;
+  --green: #4caf50;
+  --blue: #2196f3;
+  --side: 200px;
+}
+
+body {
+  width: 600px;
+  height: 400px;
+  margin: 0;
+}
+
+[class^="square"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--side);
+  height: var(--side);
+}
+
+.square-red {
+  background: var(--red);
+}
+.square-blue {
+  background: var(--blue);
+  left: calc(var(--side) * 2);
+}
+.square-green {
+  left: var(--side);
+  top: var(--side);
+  background: var(--green);
+}
+
