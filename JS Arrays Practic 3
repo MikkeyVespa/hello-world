@@ -1,0 +1,21 @@
+my decision
+
+const printIndexarray = (cities, indexx, valueNum = null) => {
+if (indexx < cities.length && indexx >= 0) {
+  return cities[indexx]
+  } return valueNum
+}
+export default printIndexarray;
+
+
+teacher's decision
+
+const get = (arr, index, defaultValue = null) => {
+  if (index >= arr.length || index < 0) {
+    return defaultValue;
+  }
+
+  return arr[index];
+};
+
+export default get;
