@@ -1,0 +1,31 @@
+my decision
+
+
+const addPrefix = (array, somePrefix) => {
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+
+    const oldAddPrefix = array[i]
+
+    const newAddPrefix = `${somePrefix} ${oldAddPrefix}`
+
+    result[i] = newAddPrefix;
+  }
+  return result;
+}
+
+export default addPrefix;
+
+
+teacher's decision
+
+
+export default (coll, prefix) => {
+  const result = [];
+
+  for (let i = 0; i < coll.length; i += 1) {
+    result[i] = `${prefix} ${coll[i]}`;
+  }
+
+  return result;
+};
