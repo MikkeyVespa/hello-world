@@ -1,0 +1,12 @@
+export const swap = (array) => {
+  if (array.length >= 2) {
+    const lastElement = array.pop(); // убирает последний элемент и возвращает его
+    const firstElement = array.shift(); // убирает первый элемент и возвращает его
+
+    array.push(firstElement); // добавляет эелемент в конец массива
+    array.unshift(lastElement); // добавляет эелемент в начало массива
+
+    return array;
+  }
+  return array;
+};
