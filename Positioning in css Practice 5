@@ -1,0 +1,92 @@
+app.css
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.left-aside {
+  /* BEGIN (write your solution here) */
+  float: left;
+  
+  /* END */
+  width: 20%;
+  height: 200px;
+
+  text-align: center;
+
+  background: #2196f3;
+}
+
+.right-aside {
+  /* BEGIN (write your solution here) */     /*float: left используется для предсказуемого переноса блоков в случае нехватки места.
+  float: left;                                             Если использовать float: right, то этот блок при переносе займёт место с конца по горизонтали.
+                                                           Поэтому для создания колонок используют одинаковое значение свойства float*/
+  /* END */
+  width: 20%;
+  height: 200px;
+
+  text-align: center;
+
+  background: #2196f3;
+}
+
+main {
+  /* BEGIN (write your solution here) */
+  float: left;
+  
+  /* END */
+  width: 60%;
+  height: 200px;
+
+  color: #fff;
+  text-align: center;
+
+  background: #3f51b5;
+}
+
+footer {
+  /* BEGIN (write your solution here) */
+  clear: both;
+  
+  /* END */
+  height: 120px;
+
+  color: #fff;
+  text-align: center;
+
+  background: #00bcd4;
+}
+
+
+index.html
+
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/app.css">
+    <title>Трёхколоночный макет</title>
+  </head>
+
+  <body>
+    <aside class="left-aside">
+      <h2>Левый сайдбар</h2>
+    </aside>
+    <main>
+      <h1>Статья</h1>
+      <p>Основная область сайта. Здесь находится уникальный контент страницы, который не должен повторяться. Это
+        основное правило использования семантического тега main в HTML5</p>
+    </main>
+    <aside class="right-aside">
+      <h2>Правый сайдбар</h2>
+    </aside>
+    <footer>
+      <h2>Футер сайта</h2>
+      <p>Различная юридическая информация</p>
+    </footer>
+  </body>
+
+</html>
