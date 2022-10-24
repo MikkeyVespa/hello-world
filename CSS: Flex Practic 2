@@ -1,0 +1,69 @@
+app.css
+
+/* BEGIN (write your solution here) */
+.catalog {
+
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  padding: 0;
+
+}
+
+.catalog-item {
+    width: 350px;
+
+}
+/* END */
+
+index.html
+
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/app.css">
+    <title>Каталог товаров</title>
+  </head>
+
+  <body>
+    <h2>Каталог товаров</h2>
+    <!-- BEGIN (write your solution here) -->
+    <ul class="catalog">
+      <li class="catalog-item">
+        <h3>name1</h3>
+        <img src="images.png" alt="name1">
+        <p class="price">1c</p>
+      </li>
+      <li class="catalog-item">
+        <h3>name2</h3>
+        <img src="images.png" alt="name2">
+        <p class="price">2c</p>
+      </li>
+      <li class="catalog-item">
+        <h3>name3</h3>
+        <img src="images.png" alt="name3">
+        <p class="price">3c</p>
+      </li>
+      <li class="catalog-item">
+        <h3>name4</h3>
+        <img src="images.png" alt="name4">
+        <p class="price">4c</p>
+      </li>
+      <li class="catalog-item">
+        <h3>name5</h3>
+        <img src="images.png" alt="name5">
+        <p class="price">5c</p>
+      </li>
+      <li class="catalog-item">
+        <h3>name6</h3>
+        <img src="images.png" alt="name6">
+        <p class="price">6c</p>
+      </li>
+    </ul>
+    <!-- END -->
+  </body>
+
+</html>
