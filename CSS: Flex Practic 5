@@ -1,0 +1,54 @@
+app.css
+
+/* BEGIN (write your solution here) */
+:root {
+  --min-height: 50vh;
+}
+
+.left-aside {
+width: 200px;
+background: #d32f2f;
+min-height: var(--min-height);
+}
+
+.content-side {
+flex-grow: 1;
+background: #388e3c;
+min-height: var(--min-height);
+}
+
+.right-aside {
+width: 350px;
+background: #1976d2;
+min-height: var(--min-height);
+}
+/* END */
+
+.d-flex {
+  display: flex;
+}
+
+
+index.html
+
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/app.css">
+    <title>Flex Grow</title>
+  </head>
+
+  <body>
+    <main class="d-flex">
+      <!-- BEGIN (write your solution here) -->
+        <article class="left-aside"></article>
+        <article class="content-side"></article>
+        <article class="right-aside"></article>
+      <!-- END -->
+    </main>
+  </body>
+
+</html>
