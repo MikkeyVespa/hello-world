@@ -1,0 +1,45 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN (write your solution here)
+const calculateSum = (array) => {
+
+  if (array.length === 0) {
+    return null;
+  }
+
+  let sum = 0;
+  for (const value of array) {
+    sum += value;
+
+  }
+  return sum / array.length;
+}
+
+export default calculateSum;
+// END
+
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN
+export default (coll) => {
+  const itemsCount = coll.length;
+
+  if (itemsCount === 0) {
+    return null;
+  }
+
+  let sum = 0;
+  for (const item of coll) {
+    sum += item;
+  }
+
+  return sum / itemsCount;
+};
+// END
