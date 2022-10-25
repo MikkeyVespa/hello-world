@@ -1,0 +1,21 @@
+first decision 
+
+export const reverse = (array) => {
+  return array.reverse();
+}
+
+second decision
+
+export const reverse = (array) => {
+  const lastElement = array.length - 1;
+  const middleElement = lastElement / 2;
+
+  for (let i = 0; i < middleElement; i++) {
+    const newLastElement = lastElement - i;
+    const mirrorElemelt = array[i];
+
+    array[i] = array[newLastElement];
+    array[newLastElement] = mirrorElemelt;
+
+  }
+}
