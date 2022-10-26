@@ -1,0 +1,45 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+/* eslint-disable no-continue */
+
+// BEGIN (write your solution here)
+const getTotalAmount = (array, currency) => {
+  let sum = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (currency === array[i].slice(0, 3))
+      sum += Number(array[i].slice(3))
+  }
+  return sum;
+}
+
+export default getTotalAmount;
+// END
+
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+/* eslint-disable no-continue */
+
+// BEGIN
+const getTotalAmount = (money, currency) => {
+  let sum = 0;
+
+  for (const bill of money) {
+    const currentCurrency = bill.slice(0, 3);
+    if (currentCurrency !== currency) {
+      continue;
+    }
+    const denomination = Number(bill.slice(4));
+    sum += denomination;
+  }
+
+  return sum;
+};
+
+export default getTotalAmount;
+// END
