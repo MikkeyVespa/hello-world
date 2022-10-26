@@ -1,0 +1,22 @@
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN (write your solution here)
+const getSameParity = (array) => {
+  const result = [];
+
+  if (array.length === 0) {
+    return result;
+  }
+  const reminder = Math.abs(array[0] % 2);
+  for (const element of array) {
+    if (Math.abs(element % 2) === reminder) {
+      result.push(element);
+
+    }
+  }
+  return result;
+}
+
+export default getSameParity;
+// END
