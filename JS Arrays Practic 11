@@ -1,0 +1,52 @@
+my decision 
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN (write your solution here)
+const definitions = (array) => {
+  if (array.length === 0) {
+    return '';
+  }
+  const result = [];
+  for (const element of array) {
+    result.push(`<dt>${element[0]}</dt>`);
+    result.push(`<dd>${element[1]}</dd>`);
+  }
+  const stringResult = result.join(''); 
+  const res = `<dl>${stringResult}</dl>`;
+  return res;
+}
+
+export default definitions;
+// END
+
+
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN
+const buildDefinitionList = (definitions) => {
+  if (definitions.length === 0) {
+    return '';
+  }
+
+  const parts = [];
+
+  for (const definition of definitions) {
+    const name = definition[0];
+    const description = definition[1];
+    parts.push(`<dt>${name}</dt><dd>${description}</dd>`);
+  }
+
+  const innerValue = parts.join('');
+  const result = `<dl>${innerValue}</dl>`;
+
+  return result;
+};
+
+export default buildDefinitionList;
+// END
