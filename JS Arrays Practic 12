@@ -1,0 +1,44 @@
+my decision
+
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN (write your solution here)
+const makeCensored = (text, array) => {
+
+  const separator = ' ';
+  const words = text.split(separator);
+
+  const capitalizedWords = [];
+
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] === array[0] || words[i] === array[1] || words[i] === array[2] || words[i] === array[3]) {
+      words[i] = '$#%!';
+      capitalizedWords.push(words[i]);
+    } else
+    capitalizedWords.push(words[i]);
+  }
+  return capitalizedWords.join(separator);
+}
+
+export default makeCensored;
+// END
+
+teacher's decision
+
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN
+const makeCensored = (text, stopWords) => {
+  const words = text.split(' ');
+
+  const result = [];
+  for (const word of words) {
+    const newWord = stopWords.includes(word) ? '$#%!' : word;
+    result.push(newWord);
+  }
+
+  return result.join(' ');
+};
+
+export default makeCensored;
+// END
