@@ -1,0 +1,48 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN (write your solution here)
+const getSuperSeriesWinner  = (array) => {
+  let countUssrpoint = 0;
+  let countCanadapoint = 0;
+  let result = '';
+  for (const game of array) {
+    if (game[0] === game[1]) {
+      continue;
+    }
+    game[0] > game[1] ? countCanadapoint += 1 : countUssrpoint += 1;
+  }
+  if (countCanadapoint === countUssrpoint) {
+    return null;
+  }
+  result = countCanadapoint > countUssrpoint ? 'canada' : 'ussr';
+return result;
+}
+
+export default getSuperSeriesWinner 
+// END
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN
+export default (scores) => {
+  let result = 0;
+  for (const score of scores) {
+    result += Math.sign(score[0] - score[1]);
+  }
+
+  if (result > 0) {
+    return 'canada';
+  }
+  if (result < 0) {
+    return 'ussr';
+  }
+
+  return null;
+};
+// END
