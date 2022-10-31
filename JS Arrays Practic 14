@@ -1,0 +1,32 @@
+my decision 
+
+/* eslint-disable no-restricted-syntax */
+
+// BEGIN (write your solution here)
+const getUinqElement = (string) => {
+  const sumUniqElement = new Set(string);
+  return sumUniqElement.size;
+}
+
+export default getUinqElement;
+// END
+
+teacher's decision 
+
+/* eslint-disable no-restricted-syntax */
+
+// BEGIN
+const countUniqChars = (text) => {
+  const uniqChars = [];
+
+  for (const char of text) {
+    if (!uniqChars.includes(char)) {
+      uniqChars.push(char);
+    }
+  }
+
+  return uniqChars.length;
+};
+
+export default countUniqChars;
+// END
