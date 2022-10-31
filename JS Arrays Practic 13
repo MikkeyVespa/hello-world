@@ -1,0 +1,21 @@
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+import _ from 'lodash';
+
+// BEGIN (write your solution here)
+export default getSameCount = (arr11, arr12) => {
+  const arr1 = _.uniq(arr11);
+  const arr2 = _.uniq(arr12);
+  let res = 0;
+
+  for (const element of arr1) {
+    for (const element1 of arr2) {
+      if (element === element1) {
+        res += 1;
+      }
+    }
+  }
+  return res;
+}
+// END
