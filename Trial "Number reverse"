@@ -1,0 +1,40 @@
+my decision
+
+// @ts-check
+// BEGIN (write your solution here)
+const getReverse = (num) => {
+  let res = '';
+  const wordNum = String(Math.abs(num));
+  console.log(wordNum);
+  for (let i = wordNum.length - 1; i >= 0; i--) {
+    res += `${wordNum[i]}`;
+  }
+  if (num < 0) {
+    return res = -Number(res);
+  }
+  else {
+    return Number(res);
+  } 
+  return res;
+}
+export default getReverse;
+// END
+
+teacher's decision
+
+// @ts-check
+// BEGIN
+const reverseInt = (num) => {
+  const numAsStr = String(Math.abs(num));
+  let reversedStr = '';
+
+  for (let i = numAsStr.length - 1; i >= 0; i -= 1) {
+    reversedStr += numAsStr[i];
+  }
+  const reversedModule = Number(reversedStr);
+
+  return num < 0 ? -reversedModule : reversedModule;
+};
+
+export default reverseInt;
+// END
