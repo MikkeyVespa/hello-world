@@ -1,0 +1,47 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here) (write your solution here)
+const isPerfect = (num) => {
+  let divider = 0;
+
+  for (let i = 1; i <= num / 2; i++) {
+    if (num % i === 0) {
+      divider += i;
+    }
+  }
+  if (divider === num && divider !== 0) {
+    return true;
+  } else {
+    return false
+  }
+}
+// END
+
+export default isPerfect;
+
+my teacher's
+
+// @ts-check
+
+// BEGIN (write your solution here)
+const isPerfect = (num) => {
+  if (num < 6) {
+    return false;
+  }
+
+  let sum = 0;
+  const upperBorder = num / 2;
+
+  for (let divisor = 1; divisor <= upperBorder; divisor += 1) {
+    if (num % divisor === 0) {
+      sum += divisor;
+    }
+  }
+
+  return sum === num;
+};
+// END
+
+export default isPerfect;
