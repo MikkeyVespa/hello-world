@@ -1,0 +1,50 @@
+my decision
+
+// BEGIN (write your solution here)
+export default getSameCount = (arr11, arr12) => {
+
+  let res = [];
+
+  for (const element of arr11) {
+    for (const element1 of arr12) {
+      if (element === element1) {
+        if (res.includes(element)) {
+          continue;
+        }
+        res.push(element);
+      }
+    }
+  }
+  return res;
+}
+// END
+
+teacher's decision
+
+// BEGIN
+const getIntersectionOfSortedArrays = (arr1, arr2) => {
+  const size1 = arr1.length;
+  const size2 = arr2.length;
+
+  let i1 = 0;
+  let i2 = 0;
+  const result = [];
+
+  while (i1 < size1 && i2 < size2) {
+    const lastCommon = result[result.length - 1];
+    if (arr1[i1] === arr2[i2] && arr1[i1] !== lastCommon) {
+      result.push(arr1[i1]);
+      i1 += 1;
+      i2 += 1;
+    } else if (arr1[i1] > arr2[i2]) {
+      i2 += 1;
+    } else {
+      i1 += 1;
+    }
+  }
+
+  return result;
+};
+
+export default getIntersectionOfSortedArrays;
+// END
