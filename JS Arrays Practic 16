@@ -1,0 +1,66 @@
+decision 1
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+const openingSymbols = ['(', '[', '{', '<'];
+const closingSymbols = [')', ']', '}', '>'];
+
+// BEGIN (write your solution here)
+const isBracketStructureBalanced = (expression) => {
+  const exp = expression;
+  const stack = [];
+  const PARE = {
+    ")": "(",
+    "]": "[",
+    "}": "{",
+    ">": "<"
+  };
+
+  for (let i = 0; i < exp.length; i += 1) {
+    const el = exp[i];
+
+    if (
+      PARE[el] === stack[stack.length - 1] &&
+      stack[stack.length - 1] !== undefined
+    ) {
+      stack.pop();
+    } else {
+      stack.push(el);
+    }
+  }
+
+  return stack.length === 0;
+};
+export default isBracketStructureBalanced;
+// END
+
+decision 2
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+const openingSymbols = ['(', '[', '{', '<'];
+const closingSymbols = [')', ']', '}', '>'];
+
+// BEGIN
+const isOpeningSymbol = (symbol) => openingSymbols.includes(symbol);
+const getClosingSymbolFor = (symbol) => closingSymbols[openingSymbols.indexOf(symbol)];
+
+export default (str) => {
+  const stack = [];
+  for (const symbol of str) {
+    if (isOpeningSymbol(symbol)) {
+      const closingSymbol = getClosingSymbolFor(symbol);
+      stack.push(closingSymbol);
+    } else {
+      const lastSavedSymbol = stack.pop();
+      if (symbol !== lastSavedSymbol) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+};
+// END
