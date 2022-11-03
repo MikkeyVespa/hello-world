@@ -1,0 +1,40 @@
+my decision
+
+// @ts-check
+// BEGIN (write your solution here)
+const happyTicket = (string) => {
+
+  const path = string.length / 2;
+  let leftSize = 0;
+  let rightSize = 0;
+  const path1 = string.slice(0, path);
+  const path2 = string.slice(path);
+
+  for (let i = 0; i < path1.length; i++) {
+    leftSize += Number(path1[i]);
+
+  }
+  for (let i = 0; i < path2.length; i++) {
+    rightSize += Number(path2[i]);
+
+  }
+  if (leftSize === rightSize) {
+    return true;
+  } else return false;
+}
+export default happyTicket;
+// END
+
+teacher's decision
+
+// @ts-check
+// BEGIN
+export default (num) => {
+  let balance = 0;
+
+  for (let i = 0, j = num.length - 1; i < j; i += 1, j -= 1) {
+    balance += +num[i] - +num[j];
+  }
+  return balance === 0;
+};
+// END
