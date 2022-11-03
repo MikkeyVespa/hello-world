@@ -1,0 +1,23 @@
+////// @ts-check
+const sumOfSquareDigits = (num) => {
+  const numAsStr = String(num);
+  let sum = 0;
+  for (let i = 0; i < numAsStr.length; i += 1) {
+    const digit = Number(numAsStr[i]);
+    sum += digit * digit;
+  }
+//////
+  return sum;
+};
+
+// BEGIN (write your solution here)
+const happyNumber = (number) => {
+  let sum = number;
+ for ( let i = 0; i < 10; i++) {
+   sum = sumOfSquareDigits(sum);
+ }
+ return sum === 1;
+}
+
+export default happyNumber;
+// END
