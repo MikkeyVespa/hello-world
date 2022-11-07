@@ -1,0 +1,30 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+const getDistance = ([x1, y1], [x2, y2]) => {
+  const xs = x2 - x1;
+  const ys = y2 - y1;
+
+  return Math.sqrt(xs ** 2 + ys ** 2);
+};
+
+// BEGIN (write your solution here)
+export const getTheNearestLocation = (locations, currentPoint) => {
+  if (locations.length === 0) {
+    return null;
+  }
+  let [nearLocation] = locations;
+  const [, point] = nearLocation;
+  let minDistance = getDistance(currentPoint, point);
+
+  for (const location of locations) {
+    const [, nearpoint] = location;
+    const distanse = getDistance(currentPoint, nearpoint);
+    if (distanse < minDistance) {
+      minDistance = distanse;
+      nearLocation = location;
+    }
+  }
+  return nearLocation;
+}
+// END
