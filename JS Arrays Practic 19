@@ -1,0 +1,44 @@
+my decision
+
+/* eslint-disable import/prefer-default-export, prefer-const */
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+// @ts-check
+
+// BEGIN (write your solution here)
+export const getMax = (array) => {
+  if (array.length === 0) {
+    return null;
+  }
+  const [firstElement, ...rest] = array;
+  let maxElement = firstElement;
+  for (const element of rest) {
+    if (element > maxElement) {
+      maxElement = element;
+    }
+  }
+  return maxElement;
+};
+// END
+
+teacher's decision
+
+/* eslint-disable import/prefer-default-export, prefer-const */
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+// @ts-check
+
+// BEGIN
+export const getMax = (coll) => {
+  if (coll.length === 0) {
+    return null;
+  }
+
+  let [max, ...rest] = coll;
+  for (const value of rest) {
+    if (value > max) {
+      max = value;
+    }
+  }
+
+  return max;
+};
+// END
