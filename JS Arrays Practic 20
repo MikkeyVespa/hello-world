@@ -1,0 +1,41 @@
+my decision
+
+/* eslint-disable import/prefer-default-export, default-case, consistent-return */
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN (write your solution here)
+export const flatten = (array) => {
+  if (array.length === 0) {
+    return [];
+  }
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i]) === true) {
+      result.push(...array[i]);
+    } else {
+      result.push(array[i]);
+    }
+  }
+  return result;
+};
+// END
+
+teather's decision
+
+/* eslint-disable import/prefer-default-export, default-case, consistent-return */
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN
+export const flatten = (coll) => {
+  let result = [];
+  for (const item of coll) {
+    if (Array.isArray(item)) {
+      result = [...result, ...item];
+    } else {
+      result = [...result, item];
+    }
+  }
+
+  return result;
+};
+// END
