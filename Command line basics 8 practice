@@ -1,0 +1,7 @@
+my decision
+
+cat /usr/src/app/languages | sort | head -n 2
+
+teacher's decision
+
+sort languages | head -n 2
