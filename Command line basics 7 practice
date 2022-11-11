@@ -1,0 +1,1 @@
+cat source > /tmp/result
