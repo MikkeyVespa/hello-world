@@ -1,0 +1,9 @@
+fs
+├── example1
+│   ├── file
+│   └── subexample
+│       ├── file
+│       └── directory
+|           └── another_file
+└── example2
+    └── another_file
