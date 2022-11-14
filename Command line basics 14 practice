@@ -1,0 +1,7 @@
+my decision
+
+chmod u=rx,g=x,o=x myfile
+
+teacher's decision
+
+chmod 511 myfile
