@@ -1,0 +1,8 @@
+cd code-user/ # Переходим в директорию code-user
+rm -f index.html
+git add index.html
+git commit -m 'remove index.html'
+mv hexlet.txt hexlet2.txt
+git add hexlet.txt
+git add hexlet2.txt
+git commit -m 'rename hexlet.txt to hexlet2.txt'
