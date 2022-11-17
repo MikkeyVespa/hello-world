@@ -1,0 +1,9 @@
+cd code-user/ # Переходим в директорию code-user
+git switch refactoring
+git reset --hard HEAD~2
+git switch working-on-html
+# Редактируем и сохраняем файл
+# Можно использовать vim или nano
+vim index.html
+git add index.html
+git commit -m 'fix index.html'
