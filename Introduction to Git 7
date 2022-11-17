@@ -1,0 +1,2 @@
+cd code-user/ # Переходим в директорию code-user
+git reset --hard HEAD~2
