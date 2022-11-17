@@ -1,0 +1,7 @@
+cd code-user/ # Переходим в директорию code-user
+git log -p --oneline -- todo.md
+git checkout 7c2fcf8
+
+# Альтернативный вариант решения использовать опцию --name-status
+# git log --name-status
+# Метка "A" перед файлом, сокращение от "Added"
