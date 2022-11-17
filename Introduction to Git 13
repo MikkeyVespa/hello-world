@@ -1,0 +1,9 @@
+cd code-user/ # Переходим в директорию code-user
+git add . # Так как есть изменения не добавленные в индекс
+git stash
+echo 'Hexlet is awesome!' > todo.md
+echo 'stash не трогает новые файлы, которые еще не добавлены в индекс.' >> hexlet.txt
+git add .
+git commit -m 'refactoring'
+git stash pop
+git commit -am 'changes from stash'
