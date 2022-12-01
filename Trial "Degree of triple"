@@ -1,0 +1,38 @@
+my decision
+
+// @ts-check
+// BEGIN (write your solution here)
+const beADegree = (num) => {
+  if (num === 0) {
+    return false;
+  }
+  if (num === 1) {
+    return true;
+  }
+  while (num % 3 === 0) {
+    num = num / 3;
+    console.log(num);
+  }
+  if (num === 1) {
+    return true;
+  } else {
+    return false
+  }
+}
+
+export default beADegree;
+// END
+
+teacher's decision
+
+// @ts-check
+// BEGIN
+export default (num) => {
+  let current = 1;
+  while (current < num) {
+    current *= 3;
+  }
+
+  return current === num;
+};
+// END
