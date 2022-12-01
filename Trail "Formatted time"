@@ -1,0 +1,50 @@
+my decision
+
+// @ts-check
+// BEGIN (write your solution here)
+const formattedTime = (time) => {
+  let hour = 0;
+  let minuts = 0;
+  let result;
+  while (time > 1440) {
+    time = time - 1440;
+  }
+  if (time === 1440) {
+    result = `00:00`
+    return result;
+  }
+  while (time >= 60) {
+    hour++;
+    time -= 60;
+  }
+  while (time > 0) {
+    minuts++;
+    time -= 1;
+  }
+  if (String(hour).length < 2) {
+    hour = `0${hour}`;
+  }
+  if (String(minuts).length < 2) {
+    minuts = `0${minuts}`;
+  }
+  result = `${hour}:${minuts}`
+  return result;
+}
+
+export default formattedTime;
+// END
+
+teacher's decision
+
+// @ts-check
+// BEGIN
+export default (rawMinutes) => {
+  const hours = Math.floor((rawMinutes / 60) % 24);
+  const formattedHours = hours >= 10 ? hours : `0${hours}`;
+
+  const minutes = rawMinutes % 60;
+  const formattedMinutes = minutes >= 10 ? minutes : `0${minutes}`;
+
+  return `${formattedHours}:${formattedMinutes}`;
+};
+// END
