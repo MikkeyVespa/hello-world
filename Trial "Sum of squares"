@@ -1,0 +1,52 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here) (write your solution here)
+const sumSquareDifference = (n) => {
+  let sumSquare = 0;
+  let squareSum = 0;
+  for (let i = 0; i <= n; i++) {
+    squareSum += i * i;
+    // console.log(squareSum);
+  }
+  for (let i = 0; i <= n; i++) {
+    sumSquare += i;
+  }
+  sumSquare = sumSquare * sumSquare;
+  // console.log(sumSquare);
+  return sumSquare - squareSum;
+}
+// END
+
+export default sumSquareDifference;
+
+teacher's decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+const sumOfSquares = (n) => {
+  let sum = 0;
+
+  for (let i = 1; i <= n; i += 1) {
+    sum += i * i;
+  }
+
+  return sum;
+};
+
+const squareOfSum = (n) => {
+  let sum = 0;
+
+  for (let i = 1; i <= n; i += 1) {
+    sum += i;
+  }
+
+  return sum * sum;
+};
+
+const sumSquareDifference = (n) => squareOfSum(n) - sumOfSquares(n);
+// END
+
+export default sumSquareDifference;
