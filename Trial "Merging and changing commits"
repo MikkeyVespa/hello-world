@@ -1,0 +1,13 @@
+cd code-user/ # Change to code-user directory
+git rebase -i HEAD~7
+# edit the list of commits in the editor
+pick 15da82c fix cli.md
+s d4ae3e8 fix cli.md
+s 6836505 fix cli.md
+s 05cc245 fix cli.md
+r 9a592d5 fix something
+pick 74407fe fix git.md
+s c3f34c5 fix git.md
+# save and exit the editor
+# git will prompt you to edit the commit descriptions
+# edit and save the result
