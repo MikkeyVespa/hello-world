@@ -1,0 +1,26 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here) (write your solution here)
+const diff = (cor1, cor2) => {
+  let result = cor1 > cor2 ? cor1 - cor2 : cor2 - cor1;
+  if (result > 360 - result) {
+    result = 360 - result
+  }
+  return Math.abs(result);
+}
+// END
+export default diff;
+
+teacher's decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+const diff = (a, b) => {
+  const angle = Math.abs(a - b);
+  return Math.min(angle, 360 - angle);
+};
+// END
+export default diff;
