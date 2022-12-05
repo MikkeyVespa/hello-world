@@ -1,0 +1,12 @@
+cd code-user/ # Переходим в директорию code-user
+git restore --staged . # Возвращаем все коммиты
+echo 'notes/cooking.md' > .gitignore
+git add .gitignore
+git commit -m 'add .gitignore'
+git rm --cached notes/cooking.md
+git add README.md
+git commit -m 'fix README.md'
+git add notes/cli.md
+git commit -m 'fix cli.md'
+git add notes/git.md
+git commit -m 'fix git.md'
