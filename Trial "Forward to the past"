@@ -1,0 +1,3 @@
+cd code-user/ # Переходим в директорию code-user
+git log --oneline --grep="add note about installing git on linux" # находим коммит с таким сообщением
+git reset --hard 548ac6a5 № удаляем все коммиты до коммита с таким сообщением
