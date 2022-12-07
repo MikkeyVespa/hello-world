@@ -1,0 +1,108 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/app.css">
+  <title>Terminal</title>
+</head>
+
+<body>
+  <!-- BEGIN (write your solution here) -->
+  <div class="terminal">
+    <div class="header">
+      <button class="red"></button>
+      <button class="yellow"></button>
+      <button class="green"></button>
+    </div>
+    <div class="codes">
+        <pre><code><span class="teg">&lt;section</span> <span class="atribut">class</span>=&quot;<span class="value">card</span>&quot;<span class="teg">&gt;</span>
+  <span class="teg">&lt;h1&gt;</span>Nike Air Max<span class="teg">&lt;/h1&gt;</span>
+  <span class="teg">&lt;img</span> <span class="atribut">src</span>=&quot;<span class="value">./images/airmax2020.png</span>&quot; <span class="atribut">alt</span>=&quot;<span class="value">Nike Air Max</span>&quot;<span class="teg">&gt;</span>
+  <span class="teg">&lt;button&gt;</span>Купить<span class="teg">&lt;/button&gt;</span>
+<span class="teg">&lt;/section&gt;</span></code></pre>
+    </div>
+  </div>
+  <!-- END -->
+</body>
+
+</html>
+
+style.css
+
+@font-face {
+  font-weight: 400;
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+
+  background: #7e57c2;
+}
+
+/* BEGIN (write your solution here) */
+.terminal {
+  padding: 20px 30px;
+  color: white;
+  background-color: #263238;
+  border-radius: 5px;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  margin-right: 5px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.red {
+  background-color: #ff5f56;
+}
+
+.yellow {
+  background-color: #ffbd2e;
+}
+
+.green {
+  background-color: #27c93f;
+}
+
+pre {
+  margin: 0;
+}
+
+code {
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.teg {
+  color: #ff5370;
+}
+
+.atribut {
+  color: #ffcb6b;
+}
+
+.value {
+  color: #c3e88d;
+}
+
+/* END */
