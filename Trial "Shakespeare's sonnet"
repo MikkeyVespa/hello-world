@@ -1,0 +1,76 @@
+:root {
+  --font-size: 27px;
+  --line-height: 37.5px;
+}
+
+/* BEGIN (write your solution here) */
+@font-face {
+  font-family: 'Caveat';
+  src: url('../assets/fonts/caveat.woff2');
+}
+
+@font-face {
+  font-family: 'Marck Script';
+  src: url('../assets/fonts/marckscript.woff2');
+}
+/* END */
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+
+  background-color: #4db6ac;
+}
+
+.notebook {
+  position: relative;
+
+  /* BEGIN (write your solution here) */
+  box-sizing: border-box;
+  width: 750px;
+  height: 700px;
+  padding-top: 50px;
+  /* END */
+
+  word-spacing: 6px;
+
+  background-color: #fff;
+  box-shadow: 4px 6px 16px 3px #009688;
+}
+
+.notebook::before {
+  position: absolute;
+  top: 0;
+  left: 50px;
+
+  width: 2px;
+  height: 100%;
+
+  background-color: #ff5722;
+
+  content: "";
+}
+
+/* BEGIN (write your solution here) */
+.paper {
+height: 100%;
+padding: 0 60px 0;
+font-size: var(--font-size);
+line-height: var(--line-height);
+background: repeating-linear-gradient(#ffffff, #ffffff calc(var(--line-height) - 1px), #80cbc4 calc(var(--line-height) - 1px), #80cbc4 calc(var(--line-height)));
+}
+
+pre {
+  margin: 0;
+  padding-top: 10px;
+  font-family: 'Caveat';
+}
+
+.author {
+  font-family: 'Marck Script';
+  text-align: right;
+}
+/* END */
