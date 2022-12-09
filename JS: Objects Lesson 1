@@ -1,0 +1,10 @@
+// @ts-check
+
+// BEGIN (write your solution here)
+const getObjectfromJson = () => {
+  const object = {"files": ["src/objects.js"], "config": true,}
+  return object;
+}
+
+export default getObjectfromJson;
+// END
