@@ -1,0 +1,16 @@
+// @ts-check
+/* eslint-disable no-param-reassign */
+
+import _ from 'lodash';
+
+// BEGIN (write your solution here)
+const normalize = (lesson) => {
+  lesson.name = _.capitalize(lesson.name);
+  lesson.description = lesson.description.toLowerCase();
+
+  console.log(lesson);
+
+}
+
+export default normalize;
+// END
