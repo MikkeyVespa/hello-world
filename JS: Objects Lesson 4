@@ -1,0 +1,45 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+import _ from 'lodash';
+
+const getInfoFromString = (nameSait) => {
+  let scheme;
+  let name;
+  const info = {};
+  if (nameSait.startsWith('h')) {
+    scheme = _.head(nameSait.split(':'));
+    name = _.last(nameSait.split('/'));
+  } else {
+    scheme = 'http';
+    name = nameSait;
+  }
+  info.scheme = scheme;
+  info.name = name;
+  return info;
+};
+
+export default getInfoFromString;
+// END
+
+teacher's decision
+
+// @ts-check
+
+// BEGIN
+export default (domain) => {
+  let scheme = '';
+  if (domain.startsWith('https://')) {
+    scheme = 'https';
+  // else if другие протоколы
+  } else {
+    scheme = 'http';
+  }
+
+  const name = domain.replace(`${scheme}://`, '');
+
+  return { scheme, name };
+};
+// END
