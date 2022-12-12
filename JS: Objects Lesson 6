@@ -1,0 +1,38 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN (write your solution here)
+export default (obj, arr) => {
+  const result = {};
+  const values = Object.entries(obj);
+  for (const [key, value] of values) {
+    for (const arrnum of arr) {
+      if (key === arrnum) {
+        result[key] = value;
+      }
+    }
+  }
+  return result;
+};
+// END
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN
+export default (data, keys) => {
+  const result = {};
+
+  for (const key of keys) {
+    if (Object.hasOwn(data, key)) {
+      result[key] = data[key];
+    }
+  }
+
+  return result;
+};
+// END
