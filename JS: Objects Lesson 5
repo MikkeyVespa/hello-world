@@ -1,0 +1,46 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+import _ from 'lodash';
+
+// BEGIN (write your solution here)
+export default (string) => {
+  let result = {};
+  if (string === '') {
+    return result;
+  }
+
+  string = _.words(string.toLowerCase());
+  for (const word of string) {
+    console.log(word);
+    if (Object.hasOwn(result, word)) {
+      result[word] += 1;
+    } else {
+      result[word] = 1;
+    }
+  }
+  return result;
+}
+// END
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+import _ from 'lodash';
+
+// BEGIN
+export default (sentence) => {
+  const words = _.words(sentence);
+  const result = {};
+  for (const word of words) {
+    const lowerWord = word.toLowerCase();
+    result[lowerWord] = (result[lowerWord] ?? 0) + 1;
+  }
+
+  return result;
+};
+// END
