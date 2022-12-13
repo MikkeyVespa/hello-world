@@ -1,0 +1,30 @@
+my decision
+
+// @ts-check
+
+import _ from 'lodash';
+
+// BEGIN (write your solution here)
+export default (obj, keys, changedata) => {
+  if (keys.length === 0) {
+    Object.assign(obj, changedata);
+  } else {
+    changedata = _.pick(changedata, keys);
+    Object.assign(obj, changedata);
+    return obj;
+  }
+};
+// END
+
+teacher's decision
+
+// @ts-check
+
+import _ from 'lodash';
+
+// BEGIN
+export default (object, keys, data) => {
+  const filteredData = keys.length > 0 ? _.pick(data, keys) : data;
+  Object.assign(object, filteredData);
+};
+// END
