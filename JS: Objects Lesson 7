@@ -1,0 +1,38 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN (write your solution here)
+export default (data, arr) => {
+  let result = data;
+  for (const element of arr) {
+    if (Object.hasOwn(result, element)) {
+      result = result[element];
+    } else {
+      return null;
+    }
+  }
+  return result;
+};
+// END
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN
+export default (data, keys) => {
+  let current = data;
+  for (const key of keys) {
+    const hasProperty = Object.hasOwn(current, key);
+    if (!hasProperty) {
+      return null;
+    }
+    current = current[key];
+  }
+
+  return current;
+};
+// END
