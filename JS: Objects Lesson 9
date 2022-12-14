@@ -1,0 +1,42 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+import isObject from 'lodash/isObject.js';
+
+// BEGIN (write your solution here)
+const cloneDeep = obj => {
+  if (!isObject(obj)) {
+    return obj;
+  }
+  const result = {};
+  const arrWithValue = Object.entries(obj);
+  for (const [key, value] of arrWithValue) {
+    result[key] = cloneDeep(value);
+  }
+  return result;
+}
+export default cloneDeep;
+// END
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+import isObject from 'lodash/isObject.js';
+
+// BEGIN
+const cloneDeep = (object) => {
+  const result = {};
+  const entries = Object.entries(object);
+  for (const [key, value] of entries) {
+    result[key] = isObject(value) ? cloneDeep(value) : value;
+  }
+
+  return result;
+};
+
+export default cloneDeep;
+// END
