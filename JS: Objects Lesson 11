@@ -1,0 +1,30 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+// BEGIN (write your solution here)
+export default (users) => {
+  const result = [];
+  for (const user of users) {
+    result.push(user.name)
+    result.sort();
+  }
+  return result;
+}
+// END
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+// BEGIN
+export default (users) => {
+  const names = [];
+
+  for (const { name } of users) {
+    names.push(name);
+  }
+
+  return names.sort();
+};
+// END
