@@ -1,0 +1,30 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+const make = (namecompany, obj) => {
+  const state = 'moderating';
+  const createdAt = Date.now();
+  const id = { state, createdAt, ...obj };
+  id.name = namecompany;
+  return id;
+};
+
+export default make;
+// END
+
+teacher's decision
+
+// @ts-check
+
+// BEGIN
+export default (name, data = {}) => {
+  const defaultData = {
+    state: 'moderating',
+    createdAt: Date.now(),
+  };
+
+  return { ...defaultData, ...data, name };
+};
+// END
