@@ -1,0 +1,51 @@
+my decision
+
+// @ts-check
+/* eslint-disable no-console */
+
+// BEGIN (write your solution here)
+const checkNumSimple = (num) => {
+  const number = num;
+  const simpleNum = () => {
+    let result = 0;
+    for (let i = 0; i <= number; i += 1) {
+      if (number % i === 0) {
+        result += 1;
+      }
+    }
+    if (result === 2) {
+      return 'yes';
+    } return 'no';
+  };
+  console.log(simpleNum());
+};
+export default checkNumSimple;
+// END
+
+teacher's decision
+
+// @ts-check
+/* eslint-disable no-console */
+
+// BEGIN
+const isPrime = (num) => {
+  if (num < 2) {
+    return false;
+  }
+
+  for (let i = 2; i <= Math.sqrt(num); i += 1) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+const sayPrimeOrNot = (num) => {
+  const text = isPrime(num) ? 'yes' : 'no';
+  console.log(text);
+};
+
+export default sayPrimeOrNot;
+// END
