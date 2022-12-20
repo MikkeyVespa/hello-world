@@ -1,0 +1,34 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN (write your solution here)
+export default (...arr) => {
+  const result = [];
+  for (const [year, month, day] of arr) {
+    const elem = new Date(year, month, day);
+    result.push(elem.toDateString());
+  }
+  return result;
+};
+// END
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN
+export default (...coll) => {
+  const formattedDates = [];
+
+  for (const item of coll) {
+    const date = new Date(...item);
+    const formattedDate = date.toDateString();
+    formattedDates.push(formattedDate);
+  }
+
+  return formattedDates;
+};
+// END
