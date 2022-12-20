@@ -1,0 +1,34 @@
+my decision
+
+// @ts-check
+
+import _ from 'lodash';
+
+// BEGIN (write your solution here)
+export default (...counterArg) => {
+  if (counterArg.length === 0) {
+    return null;
+  }
+  return _.sum(counterArg) / counterArg.length;
+};
+// END
+
+teacher's decision
+
+// @ts-check
+
+import _ from 'lodash';
+
+// BEGIN
+const average = (...numbers) => {
+  const count = numbers.length;
+
+  if (count === 0) {
+    return null;
+  }
+
+  return _.sum(numbers) / count;
+};
+
+export default average;
+// END
