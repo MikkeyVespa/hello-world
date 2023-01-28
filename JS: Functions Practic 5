@@ -1,0 +1,25 @@
+my decision
+
+// BEGIN (write your solution here)
+const takeOldest = (users, numbers = 1) => {
+
+  users.sort((a, b) => Math.sign(Date.parse(a.birthday) - Date.parse(b.birthday)));
+  const res = users.slice(0, numbers);
+  // console.log(users.slice(0, numbers));
+  return res;
+
+};
+
+export default takeOldest;
+// END
+
+teacher's decision
+
+// BEGIN
+const takeOldest = (users, count = 1) => {
+  const sorted = _.sortBy(users, ({ birthday }) => Date.parse(birthday));
+  return sorted.slice(0, count);
+};
+
+export default takeOldest;
+// END
