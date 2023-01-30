@@ -1,0 +1,26 @@
+my decision
+
+// BEGIN (write your solution here)
+const getChildren = (users) => {
+  const children = users.map((user) => user.children);
+  return children.flat();
+};
+
+export default getChildren;
+// END
+
+two teacher's decisions
+
+first:
+
+const getChildren = (users) => {
+  const childrenOfUsers = users.map(({ children }) => children);
+  return childrenOfUsers.flat();
+};
+
+export default getChildren;
+
+second:
+
+Alternative solution using flatMap
+export default (users) => users.flatMap(({ children }) => children);
