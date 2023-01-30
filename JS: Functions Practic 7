@@ -1,0 +1,10 @@
+my decision
+
+// BEGIN (write your solution here)
+const getFemale = (users) => {
+  const friendsOfUsers = users.map(({ friends }) => friends);
+  return friendsOfUsers.flat().filter(({ gender }) => gender === 'female');
+};
+
+export default getFemale;
+// END
