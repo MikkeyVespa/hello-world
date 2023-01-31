@@ -1,0 +1,10 @@
+my decision
+
+// BEGIN (write your solution here)
+const groupBy = (objects, key) => objects.reduce((acc, object) => {
+  const groupName = object[key];
+  const group = acc[groupName] ?? [];
+  return { ...acc, [groupName]: group.concat(object) };
+}, {});
+export default groupBy;
+// END
