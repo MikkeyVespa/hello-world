@@ -1,0 +1,58 @@
+my decision
+
+// @ts-check
+
+// import get from 'lodash/get.js';
+
+const freeEmailDomains = [
+  'gmail.com',
+  'yandex.ru',
+  'hotmail.com',
+  'yahoo.com',
+];
+
+// BEGIN (write your solution here)
+const getFreeDomainsCount = (emails) => {
+  const domains = emails.map((email) => {
+    const [, domain] = email.split('@');
+    return domain;
+  });
+  const myFreeDomains = domains.filter((domain) => freeEmailDomains.includes(domain));
+  const result = myFreeDomains.reduce((acc, myFreeDomain) => {
+    acc[myFreeDomain] = (acc[myFreeDomain] || 0) + 1;
+    return acc;
+  }, {});
+  return result;
+};
+
+export default getFreeDomainsCount;
+// END
+
+
+teacher's decision
+
+// @ts-check
+
+import get from 'lodash/get.js';
+
+const freeEmailDomains = [
+  'gmail.com',
+  'yandex.ru',
+  'hotmail.com',
+  'yahoo.com',
+];
+
+// BEGIN
+const getFreeDomainsCount = (emails) => emails
+  .map((email) => {
+    const [, domain] = email.split('@');
+    return domain;
+  })
+  .filter((domain) => freeEmailDomains.includes(domain))
+  .reduce((acc, domain) => {
+    const count = get(acc, domain, 0) + 1;
+    return { ...acc, [domain]: count };
+  }, {});
+
+export default getFreeDomainsCount;
+// END
