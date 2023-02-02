@@ -1,0 +1,48 @@
+my decision
+
+// @ts-check
+
+const smallestDivisor = (num) => {
+  // BEGIN (write your solution here)
+  if (num === 1) {
+    return 1;
+  }
+  const iter = (divisor, acc) => {
+    if (divisor % acc === 0) {
+      return acc;
+    }
+    return iter(divisor, acc + 1);
+  };
+  return iter(num, 2);
+  // END
+};
+
+export default smallestDivisor;
+
+
+
+teacher's decision
+
+// @ts-check
+
+const smallestDivisor = (num) => {
+  // BEGIN
+  // Visualize Execution: https://goo.gl/Mc68MA
+  const iter = (acc) => {
+    // We use 'num / 2' in the condition below, and not 'num'.
+    // This is a simple optimization: a number cannot be divided
+    // by a number larger than its half.
+    if (acc > num / 2) {
+      return num;
+    }
+    if (num % acc === 0) {
+      return acc;
+    }
+    return iter(acc + 1);
+  };
+
+  return iter(2);
+  // END
+};
+
+export default smallestDivisor;
