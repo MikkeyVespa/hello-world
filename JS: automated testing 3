@@ -1,0 +1,32 @@
+my decision
+
+// @ts-check
+
+import assert from 'power-assert';
+import getFunction from '../functions.js';
+
+const indexOf = getFunction();
+
+// BEGIN (write your solution here)
+assert(indexOf([1, 2, 3, 4], 1) === 0);
+assert(indexOf([1, 2, 3, 4], 1, 1) === -1);
+// END
+
+
+
+
+teacher's decision
+
+// @ts-check
+
+import assert from 'power-assert';
+import getFunction from '../functions.js';
+
+const indexOf = getFunction();
+
+// BEGIN
+assert(indexOf(['one', 'two', 8], 'one') === 0);
+assert(indexOf([1, 8, 9, 3, 9], 9) === 2);
+assert(indexOf([1, 8, 9, 3, 9], 9, 3) === 4);
+assert(indexOf([], 9) === -1);
+// END
