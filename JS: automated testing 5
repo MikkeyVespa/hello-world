@@ -1,0 +1,15 @@
+my decision
+
+// @ts-check
+
+import getFunction from '../functions.js';
+
+const gt = getFunction();
+
+// BEGIN (write your solution here)
+test('gt', () => {
+  expect(gt(3, 1)).toBe(true);
+  expect(gt(1, 1)).toBe(false);
+  expect(gt(1, 2)).toBe(false);
+});
+// END
