@@ -1,0 +1,14 @@
+my decision
+
+// @ts-check
+
+import getFunction from '../functions.js';
+
+const without = getFunction();
+
+// BEGIN (write your solution here)
+test('getFunction', () => {
+  expect(without([1, 2, 2, 3], 1, 2)).toEqual([3]);
+  expect(without([0], 0)).toEqual([]);
+});
+// END
