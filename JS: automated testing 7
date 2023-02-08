@@ -1,0 +1,70 @@
+my decision
+
+// @ts-check
+
+import _ from 'lodash';
+
+import getFunction from '../functions.js';
+
+const set = getFunction();
+
+// BEGIN (write your solution here)
+const obj = { a: [{ b: { c: 3 } }] };
+const cloneObj = _.cloneDeep(obj);
+test('set', () => {
+  expect(set(obj, 'a[0].b.c', 5)).toEqual({ a: [{ b: { c: 5 } }] });
+  cloneObj.a[0].b.c = 5;
+  expect(obj).toEqual(cloneObj);
+  expect(set(obj, 'a[0].b.c', 3)).toEqual({ a: [{ b: { c: 3 } }] });
+  expect(set(obj, 'a[0].b', 5)).toEqual({ a: [{ b: 5 }] });
+  expect(set(obj, 'a[0].b.d', 5)).toEqual({ a: [{ b: { d: 5 } }] });
+});
+// END
+
+
+
+teacher's decision
+
+// @ts-check
+
+import _ from 'lodash';
+
+import getFunction from '../functions.js';
+
+const set = getFunction();
+
+// BEGIN
+let data;
+let dataCopy;
+
+beforeEach(() => {
+  data = {
+    a: [
+      {
+        b: {
+          c: 3,
+        },
+      },
+    ],
+  };
+  dataCopy = _.cloneDeep(data);
+});
+
+test('plain set', () => {
+  set(data, 'a', 'value');
+  dataCopy.a = 'value';
+  expect(data).toEqual(dataCopy);
+});
+
+test('nested set', () => {
+  set(data, 'a[0].b.c', true);
+  dataCopy.a[0].b.c = true;
+  expect(data).toEqual(dataCopy);
+});
+
+test('set new property', () => {
+  set(data, 'a[0].b.d', false);
+  dataCopy.a[0].b.d = false;
+  expect(data).toEqual(dataCopy);
+});
+// END
