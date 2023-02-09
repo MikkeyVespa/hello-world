@@ -1,0 +1,51 @@
+my decision
+
+// @ts-check
+
+import getImpelementation from '../implementations/index.js';
+
+const makeCart = getImpelementation();
+
+// BEGIN (write your solution here)
+test('basketMarket', () => {
+  const cart = makeCart();
+  cart.addItem({ name: 'car', price: 3 }, 5);
+  cart.addItem({ name: 'house', price: 10 }, 2);
+  console.log(cart);
+  expect(cart.getItems()).toEqual([{ good: { name: 'car', price: 3 }, count: 5 }, { good: { name: 'house', price: 10 }, count: 2 }]);
+  expect(cart.getItems().length).toBe(2);
+  expect(cart.getCost()).toBe(35);
+  expect(cart.getCount()).toBe(7);
+});
+// END
+
+
+
+teacher's decision
+
+// @ts-check
+
+import getImpelementation from '../implementations/index.js';
+
+const makeCart = getImpelementation();
+
+// BEGIN
+test('Cart', () => {
+  const cart = makeCart();
+  expect(cart.getItems()).toHaveLength(0);
+
+  const car = { name: 'car', price: 3 };
+  cart.addItem(car, 5);
+  expect(cart.getItems()).toEqual(expect.arrayContaining([{ good: car, count: 5 }]));
+  expect(cart.getCost()).toBe(15);
+  expect(cart.getCount()).toBe(5);
+
+  const house = { name: 'house', price: 10 };
+  cart.addItem(house, 2);
+  expect(cart.getItems()).toEqual(
+    expect.arrayContaining([{ good: car, count: 5 }, { good: house, count: 2 }],
+  ));
+  expect(cart.getCost()).toBe(35);
+  expect(cart.getCount()).toBe(7);
+});
+// END
