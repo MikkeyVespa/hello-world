@@ -1,0 +1,59 @@
+my decision tests
+
+// @ts-check
+
+import getImpelementation from '../implementations/functions.js';
+
+const fill = getImpelementation();
+
+// BEGIN (write your solution here)
+let array;
+
+beforeEach(() => {
+  array = [1, 2, 3, 4];
+});
+
+test('common case', () => {
+  fill(array, '*', 1, 3);
+  expect(array).toEqual([1, '*', '*', 4]);
+});
+
+test('should use default start and end', () => {
+  fill(array, '*');
+  expect(array).toEqual(['*', '*', '*', '*']);
+});
+
+test('should works with start >= length', () => {
+  fill(array, '*', 10, 12);
+  expect(array).toEqual([1, 2, 3, 4]);
+});
+
+test('should works with start >= end', () => {
+  fill(array, '*', 2, 2);
+  expect(array).toEqual([1, 2, 3, 4]);
+});
+
+test('should works with end > length', () => {
+  fill(array, '*', 0, 10);
+  expect(array).toEqual(['*', '*', '*', '*']);
+});
+// END
+
+
+function
+// @ts-check
+/* eslint-disable no-param-reassign */
+
+// BEGIN (write your solution here)
+const fill = (coll, value, start = 0, end = coll.length) => {
+  const collLength = coll.length;
+  const normalizedStart = start > collLength ? end : start;
+  const normalizedEnd = end > collLength ? collLength : end;
+  for (let i = normalizedStart; i < normalizedEnd; i += 1) {
+    coll[i] = value;
+  }
+  return coll;
+};
+
+export default fill;
+// END
