@@ -1,0 +1,24 @@
+my decision
+
+// BEGIN (write your solution here)
+const getLastWordLength = (str) => {
+  if (str.length === 0) {
+    return 0;
+  }
+  const lastPathstr = str.trim().split(' ');
+  return lastPathstr[lastPathstr.length - 1].length;
+};
+
+export default getLastWordLength;
+// END
+
+
+teacher's deciosion
+
+// BEGIN
+export default (str) => {
+  const words = str.trim().split(' ');
+  const lastWord = words.at(-1);
+  return lastWord.length;
+};
+// END
