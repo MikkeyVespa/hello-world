@@ -1,0 +1,29 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+export default (point1, point2) => {
+  const middlePoint = {};
+  const pointMidX = (point1.x + point2.x) / 2;
+  const pointMidY = (point1.y + point2.y) / 2;
+  middlePoint.x = pointMidX;
+  middlePoint.y = pointMidY;
+  return middlePoint;
+};
+// END
+
+
+
+teacher's decision
+
+// @ts-check
+
+// BEGIN
+export default (point1, point2) => {
+  const x = (point1.x + point2.x) / 2;
+  const y = (point1.y + point2.y) / 2;
+
+  return { x, y };
+};
+// END
