@@ -1,0 +1,12 @@
+my decision
+
+// BEGIN (write your solution here)
+export default (number) => {
+  let result = 0;
+  const binaryNumber = number.toString(2);
+  for (let i = 0; i < binaryNumber.length; i += 1) {
+    if (binaryNumber[i] === '1') { result += 1; }
+  }
+  return result;
+};
+// END
