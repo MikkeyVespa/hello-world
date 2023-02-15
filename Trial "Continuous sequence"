@@ -1,0 +1,38 @@
+my decision
+
+// BEGIN (write your solution here)
+export default (array) => {
+  if (array.length <= 1) {
+    return false;
+  }
+  for (let i = 1; i < array.length; i += 1) {
+    if (array[i] - array[i - 1] !== 1) {
+      return false;
+    }
+  }
+  return true;
+};
+// END
+
+
+teacher's decision
+
+// BEGIN
+const isContinuousSequence = (coll) => {
+  const size = coll.length;
+  if (size <= 1) {
+    return false;
+  }
+
+  const start = coll[0];
+  for (let index = 1; index < size; index += 1) {
+    if (start + index !== coll[index]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+export default isContinuousSequence;
+// END
