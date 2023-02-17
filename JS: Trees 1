@@ -1,0 +1,27 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+export default (arr) => {
+  const res = [];
+  for (let i = 0; i < arr.length; i += 1) {
+    if (Array.isArray(arr[i]) === true) {
+      res.push(arr[i]);
+    }
+  }
+  return res.flat();
+};
+// END
+
+
+teacher's decision
+
+// @ts-check
+
+// BEGIN
+export default (tree) => {
+  const nodes = tree.filter(Array.isArray);
+  return nodes.flat();
+};
+// END
