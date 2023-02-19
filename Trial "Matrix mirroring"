@@ -1,0 +1,55 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN (write your solution here)
+export default (arr) => {
+  const result = [];
+
+  for (const str of arr) {
+    const res = [];
+    for (let i = 0; i < str.length / 2; i += 1) {
+      res.push(str[i]);
+    }
+    const rev = [...res];
+    rev.reverse();
+    const f = [res, ...rev];
+    result.push(f.flat());
+  }
+  return result;
+};
+// END
+
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// BEGIN
+const getMirrorArray = (array) => {
+  const size = array.length;
+  const mirrored = [];
+
+  for (let i = 0; i < size / 2; i += 1) {
+    mirrored[i] = array[i];
+    mirrored[size - i - 1] = array[i];
+  }
+
+  return mirrored;
+};
+
+const getMirrorMatrix = (matrix) => {
+  const mirroredMatrix = [];
+
+  for (const row of matrix) {
+    const mirroredRow = getMirrorArray(row);
+    mirroredMatrix.push(mirroredRow);
+  }
+
+  return mirroredMatrix;
+};
+
+export default getMirrorMatrix;
+// END
