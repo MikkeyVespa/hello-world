@@ -1,0 +1,28 @@
+my decision
+
+// @ts-check
+
+import _ from 'lodash';
+import {
+  isFile, getName, getMeta, getChildren,
+} from '@hexlet/immutable-fs-trees';
+
+// BEGIN (write your solution here)
+const x = (node) => {
+  if (isFile(node)) {
+    const newMeta = getMeta(node);
+    return newMeta.size;
+  }
+  const children = getChildren(node);
+  const descendantCounts = children.map(x);
+  return _.sum(descendantCounts);
+};
+
+const du = (tree) => {
+  const children = getChildren(tree);
+  const result = children
+    .map((child) => [getName(child), x(child)]);
+  return result.sort(([, size1], [, size2]) => size2 - size1);
+};
+export default du;
+// END
