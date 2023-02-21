@@ -1,0 +1,24 @@
+my decision
+
+// @ts-check
+
+import path from 'path';
+import { isFile, getName, getChildren } from '@hexlet/immutable-fs-trees';
+
+// BEGIN (write your solution here)
+const findFilesByName = (tree, substring) => {
+  const iter = (node, ancestry) => {
+    const name = getName(node);
+    const children = getChildren(node);
+
+    if (isFile(node)) {
+      return name.includes(substring) ? path.join(ancestry, name) : [];
+    }
+    const newAncestry = path.join(ancestry, name);
+    return children.flatMap((child) => iter(child, newAncestry));
+  };
+  return iter(tree, '');
+};
+
+export default findFilesByName;
+// END
