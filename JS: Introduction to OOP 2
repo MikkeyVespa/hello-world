@@ -1,0 +1,66 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+const make = (numer, denom) => {
+  const obj = { numer, denom };
+  obj.setNumer = function setNumer(newnumer) {
+    this.numer = newnumer;
+  };
+  obj.setDenom = function setDenom(newdenom) {
+    this.denom = newdenom;
+  };
+  obj.getNumer = function getNumer() {
+    return this.numer;
+  };
+  obj.getDenom = function getDenom() {
+    return this.denom;
+  };
+  obj.toString = function toString() {
+    return `${this.numer}/${this.denom}`;
+  };
+  obj.add = function add(obj1) {
+    const neWnumer = (obj.getNumer() * obj1.getDenom() + obj.getDenom() * obj1.getNumer());
+    const newDenom = (obj.getDenom() * obj1.getDenom());
+    return make(neWnumer, newDenom);
+  };
+  return obj;
+};
+export default make;
+// END
+
+
+
+teacher's decision
+
+// @ts-check
+
+// BEGIN
+const make = (numer, denom) => ({
+  numer,
+  denom,
+  setNumer(newNumer) {
+    this.numer = newNumer;
+  },
+  setDenom(newDenom) {
+    this.denom = newDenom;
+  },
+  getNumer() {
+    return this.numer;
+  },
+  getDenom() {
+    return this.denom;
+  },
+  toString() {
+    return `${this.getNumer()}/${this.getDenom()}`;
+  },
+  add(rational) {
+    const newNumer = this.getNumer() * rational.getDenom() + rational.getNumer() * this.getDenom();
+    const newDenom = this.getDenom() * rational.getDenom();
+    return make(newNumer, newDenom);
+  },
+});
+
+export default make;
+// END
