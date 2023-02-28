@@ -1,0 +1,37 @@
+my decision
+
+// BEGIN (write your solution here)
+const isPalindrome = (str) => {
+  if (str.length < 2) {
+    return true;
+  }
+  return str[0] !== str[str.length - 1] ? false : isPalindrome(str.substring(1, str.length - 1));
+};
+
+export default isPalindrome;
+// END
+
+
+
+teacher's decision
+
+// BEGIN
+const isPalindrome = (string) => {
+  if (string.length <= 1) {
+    return true;
+  }
+
+  const firstSymbol = string[0];
+  const lastSymbol = string[string.length - 1];
+
+  if (firstSymbol !== lastSymbol) {
+    return false;
+  }
+
+  const stringWithoutFirstAndLastSymbols = string.substring(1, string.length - 1);
+
+  return isPalindrome(stringWithoutFirstAndLastSymbols);
+};
+
+export default isPalindrome;
+// END
