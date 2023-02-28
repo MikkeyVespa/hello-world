@@ -1,0 +1,8 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+export default (objects, callback) => objects.map(object => callback.call(object));
+
+// END
