@@ -1,0 +1,56 @@
+my decision
+
+// @ts-check
+import _ from 'lodash';
+
+// BEGIN (write your solution here)
+const changeClass = (tree, classNameWas, classNameBe) => {
+  const newTree = _.cloneDeep(tree);
+  const getChangeClass = newTree.children
+    .map((node) => {
+      if (_.has(node, 'className')) {
+        const newNode = node;
+        const newClassName = classNameWas === node.className ? classNameBe : node.className;
+        newNode.className = newClassName;
+        return newNode;
+      }
+      if (node.type === 'tag-internal') {
+        return changeClass(node, classNameWas, classNameBe);
+      }
+      return node;
+    });
+  return { ...newTree, children: getChangeClass };
+};
+export default changeClass;
+// END
+
+
+
+teacher's decision
+
+// @ts-check
+import _ from 'lodash';
+
+// BEGIN
+const changeClass = (tree, classNameFrom, classNameTo) => {
+  const innerFunc = (node) => {
+    const updatedNode = { ...node };
+
+    if (_.has(node, 'className')) {
+      const newClassName = classNameFrom === node.className ? classNameTo : node.className;
+      updatedNode.className = newClassName;
+    }
+
+    if (node.type === 'tag-internal') {
+      const newChildren = node.children.map(innerFunc);
+      updatedNode.children = newChildren;
+    }
+
+    return updatedNode;
+  };
+
+  return innerFunc(tree);
+};
+
+export default changeClass;
+// END
