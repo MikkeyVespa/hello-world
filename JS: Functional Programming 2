@@ -1,0 +1,23 @@
+my decision
+
+// BEGIN (write your solution here)
+const substr = (str, begin = 0, end = str.length) => {
+  if (begin >= str.length) {
+    return '';
+  }
+  const currentIndex = begin < 0 ? 0 : begin;
+  let lastSigh = currentIndex + (end - 1);
+  if (end < 0) {
+    lastSigh = currentIndex;
+  } else if (lastSigh > str.length - 1) {
+    lastSigh = str.length - 1;
+  }
+  let res = '';
+  for (let i = currentIndex; i <= lastSigh; i += 1) {
+    res += str[i];
+  }
+  return res;
+};
+
+export default substr;
+// END
