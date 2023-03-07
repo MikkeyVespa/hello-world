@@ -1,0 +1,91 @@
+my decision
+
+// @ts-check
+// BEGIN (write your solution here)
+function Money(value, currency = 'usd') {
+  this.value = value;
+  this.currency = currency;
+}
+
+Money.prototype.getValue = function getValue() {
+  return this.value;
+};
+
+Money.prototype.getCurrency = function getCurrency() {
+  return this.currency;
+};
+
+Money.prototype.exchangeTo = function exchangeTo(newCurrency) {
+  const currency = this.getCurrency();
+  const currentValue = this.getValue();
+  if (newCurrency !== currency) {
+    return currency === 'usd' ? new Money(currentValue * 0.7, newCurrency) : new Money(currentValue * 1.2, newCurrency);
+  }
+  return new Money(currentValue, currency);
+};
+
+Money.prototype.add = function add(money) {
+  const currency = this.getCurrency();
+  const convertedMoney = money.exchangeTo(currency);
+  const additionalValue = convertedMoney.getValue();
+  return new Money(this.getValue() + additionalValue, currency);
+};
+
+Money.prototype.format = function format() {
+  return this.getValue().toLocaleString(undefined, { style: 'currency', currency: this.getCurrency() });
+};
+
+export default Money;
+// END
+
+
+
+
+teacher's decision
+
+// @ts-check
+// BEGIN
+const rates = {
+  usd: {
+    eur: 0.7,
+  },
+  eur: {
+    usd: 1.2,
+  },
+};
+
+export default function Money(value, currency = 'usd') {
+  this.value = value;
+  this.currency = currency;
+}
+
+Money.prototype.format = function format() {
+  // bad design (pass undefined to the function), but it is js
+  return this.getValue().toLocaleString(undefined, { style: 'currency', currency: this.getCurrency() });
+};
+
+Money.prototype.getValue = function getValue() {
+  return this.value;
+};
+
+Money.prototype.getCurrency = function getCurrency() {
+  return this.currency;
+};
+
+Money.prototype.exchangeTo = function exchangeTo(newCurrency) {
+  const currency = this.getCurrency();
+  const currentValue = this.getValue();
+  if (currency === newCurrency) {
+    return new Money(currentValue, currency);
+  }
+  const newValue = currentValue * rates[currency][newCurrency];
+  return new Money(newValue, newCurrency);
+};
+
+Money.prototype.add = function add(money) {
+  const currency = this.getCurrency();
+  const convertedMoney = money.exchangeTo(currency);
+  const additionalValue = convertedMoney.getValue();
+  return new Money(this.getValue() + additionalValue, currency);
+};
+// END
