@@ -1,0 +1,23 @@
+my decision
+
+// BEGIN (write your solution here)
+const apply = (count, f, arg) => {
+  if (count === 0) {
+    return arg;
+  }
+  const counter = count - 1;
+  return apply(counter, f, f(arg));
+};
+export default apply;
+// END
+
+
+teacher's decision
+
+// BEGIN
+const apply = (count, fn, value) => (
+  count === 0 ? value : apply(count - 1, fn, fn(value))
+);
+
+export default apply;
+// END
