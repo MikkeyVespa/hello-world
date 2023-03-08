@@ -1,0 +1,35 @@
+my decision
+
+// @ts-check
+export default (str) => {
+  const lastIndex = str.length - 1;
+  // BEGIN (write your solution here)
+  const iter = (currentIndex, acc) => {
+    let currentAcc = acc;
+    if (currentIndex > lastIndex) {
+      return currentAcc;
+    }
+    currentAcc = `${str[currentIndex]}${currentAcc}`;
+    return iter(currentIndex + 1, currentAcc);
+  };
+  // END
+  return iter(0, '');
+};
+
+
+
+teacher's decision
+
+// @ts-check
+export default (str) => {
+  const lastIndex = str.length - 1;
+  // BEGIN
+  const iter = (index, acc) => {
+    if (index > lastIndex) {
+      return acc;
+    }
+    return iter(index + 1, `${str[index]}${acc}`);
+  };
+  // END
+  return iter(0, '');
+};
