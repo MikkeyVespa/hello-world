@@ -1,0 +1,9 @@
+my decision
+
+// @ts-check
+// BEGIN (write your solution here)
+const If = (func) => func;
+const True = (a) => () => a;
+const False = () => (b) => b;
+export { If, True, False };
+// END
