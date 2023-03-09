@@ -1,0 +1,5 @@
+my decision
+
+// BEGIN (write your solution here)
+export default (func) => (a, b) => func(b, a);
+// END
