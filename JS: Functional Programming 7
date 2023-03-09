@@ -1,0 +1,5 @@
+my decision
+
+// BEGIN (write your solution here)
+export default (fn, arg2) => (arg1) => fn(arg1, arg2);
+// END
