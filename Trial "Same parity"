@@ -1,0 +1,30 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+export default (arr) => {
+  const res = [];
+  const parity = Math.abs(arr[0]);
+  for (let i = 0; i < arr.length; i += 1) {
+    if (Math.abs(arr[i]) % 2 === parity % 2) {
+      res.push(arr[i]);
+    }
+  }
+  return res;
+};
+// END
+
+
+teacher's decision
+
+// @ts-check
+
+// BEGIN
+const isEven = (num) => num % 2 === 0;
+
+export default (arr) => {
+  const firstItemParity = isEven(arr[0]);
+  return arr.filter((el) => isEven(el) === firstItemParity);
+};
+// END
