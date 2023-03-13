@@ -1,0 +1,69 @@
+my decision
+
+// @ts-check
+import { makePoint, getX, getY } from '@hexlet/points';
+
+// BEGIN (write your solution here)
+const getQuadrant = (point) => {
+  const x = getX(point);
+  const y = getY(point);
+  let quadrant;
+  if (x === 0 || y === 0) {
+    return null;
+  }
+  if (x >= 1 && y >= 1) {
+    quadrant = 1;
+  }
+  if (x < 1 && y >= 1) {
+    quadrant = 2;
+  }
+  if (x < 1 && y < 1) {
+    quadrant = 3;
+  }
+  if (x >= 1 && y < 1) {
+    quadrant = 4;
+  }
+  return quadrant;
+};
+
+const getSymmetricalPoint = (point) => makePoint(-getX(point), -getY(point));
+
+const calculateDistance = (point1, point2) => Math.sqrt((getX(point2)
+  - getX(point1)) ** 2 + (getY(point2) - getY(point1)) ** 2);
+
+export { getQuadrant, getSymmetricalPoint, calculateDistance };
+// END
+
+
+
+teacher's decision
+
+// @ts-check
+import { makePoint, getX, getY } from '@hexlet/points';
+
+// BEGIN
+export const getQuadrant = (point) => {
+  const x = getX(point);
+  const y = getY(point);
+
+  if (x > 0 && y > 0) {
+    return 1;
+  } if (x < 0 && y > 0) {
+    return 2;
+  } if (x < 0 && y < 0) {
+    return 3;
+  } if (x > 0 && y < 0) {
+    return 4;
+  }
+
+  return null;
+};
+
+export const getSymmetricalPoint = (point) => makePoint(-getX(point), -getY(point));
+
+export const calculateDistance = (point1, point2) => {
+  const dX = getX(point2) - getX(point1);
+  const dY = getY(point2) - getY(point1);
+  return Math.sqrt((dX ** 2) + (dY ** 2));
+};
+// END
