@@ -1,0 +1,65 @@
+my decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+// import _ from 'lodash';
+
+// BEGIN (write your solution here)
+export default (obj1, obj2) => {
+  const res = {};
+  const getKeysObj1 = Object.keys(obj1);
+  const getKeysObj2 = Object.keys(obj2);
+  for (const key of getKeysObj1) {
+    if (!Object.hasOwn(obj2, key)) {
+      res[key] = 'deleted';
+    }
+  }
+  for (const key of getKeysObj2) {
+    if (Object.hasOwn(obj1, key)) {
+      if (obj1[key] === obj2[key]) {
+        res[key] = 'unchanged';
+      } else {
+        res[key] = 'changed';
+      }
+    } else {
+      res[key] = 'added';
+    }
+  }
+  return res;
+};
+// END
+
+
+teacher's decision
+
+// @ts-check
+/* eslint no-restricted-syntax: ["off", "ForOfStatement"] */
+
+import _ from 'lodash';
+
+// BEGIN
+
+const genDiff = (data1, data2) => {
+  const keys1 = Object.keys(data1);
+  const keys2 = Object.keys(data2);
+  const keys = _.union(keys1, keys2); // https://youtu.be/vkUTX1hruF8?t=929
+
+  const result = {};
+  for (const key of keys) {
+    if (!Object.hasOwn(data1, key)) {
+      result[key] = 'added';
+    } else if (!Object.hasOwn(data2, key)) {
+      result[key] = 'deleted';
+    } else if (data1[key] !== data2[key]) {
+      result[key] = 'changed';
+    } else {
+      result[key] = 'unchanged';
+    }
+  }
+
+  return result;
+};
+
+export default genDiff;
+// END
