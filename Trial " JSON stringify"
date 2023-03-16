@@ -1,0 +1,21 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+const stringify = (value, replacer = ' ', spacesCount = 1) => {
+  const iter = (val, depth) => {
+    if (typeof val !== 'object' || val === null) {
+      return String(val);
+    }
+    const indentSize = depth * spacesCount;
+    const currentIndent = replacer.repeat(indentSize);
+    const bracketIndent = replacer.repeat(indentSize - spacesCount);
+    const arrFromVal = Object.entries(val).map(([key, v]) => `${currentIndent}${key}: ${iter(v, depth + 1)}`);
+    return ['{', ...arrFromVal, `${bracketIndent}}`].join('\n');
+  };
+  return iter(value, 1);
+};
+
+export default stringify;
+// END
