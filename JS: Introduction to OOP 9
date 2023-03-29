@@ -1,0 +1,30 @@
+my decision
+
+// @ts-check
+
+// import _ from 'lodash';
+
+// BEGIN (write your solution here)
+export default class Cart {
+  constructor() {
+    this.items = [];
+  }
+
+  addItem(item, count) {
+    const items = this.getItems();
+    items.push({ item, count });
+  }
+
+  getItems() {
+    return this.items;
+  }
+
+  getCost() {
+    return this.items.reduce((cost, cartItem) => cost + cartItem.item.price * cartItem.count, 0);
+  }
+
+  getCount() {
+    return this.items.reduce((totalCount, cartItem) => totalCount + cartItem.count, 0);
+  }
+}
+// END
