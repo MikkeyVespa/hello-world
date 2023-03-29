@@ -1,0 +1,11 @@
+my decision
+
+// @ts-check
+// BEGIN (write your solution here)
+export default function magic(...args) {
+  const sum = args.reduce((acc, x) => acc + x, 0);
+  const f = (...moreArgs) => magic(sum, ...moreArgs);
+  f.valueOf = () => sum;
+  return f;
+}
+// END
