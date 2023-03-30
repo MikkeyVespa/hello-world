@@ -1,0 +1,16 @@
+my decision
+
+// @ts-check
+/* eslint-disable import/prefer-default-export */
+
+import ParseError from './ParseError.js';
+
+// BEGIN (write your solution here)
+export function parseJson(data) {
+  try {
+    return JSON.parse(data);
+  } catch {
+    throw new ParseError('oy');
+  }
+}
+// END
