@@ -1,0 +1,21 @@
+my decision
+
+export default class Truncater {
+  static defaultOptions = {
+    separator: '...',
+    length: 200,
+  };
+
+  // BEGIN (write your solution here)
+  constructor(options = {}) {
+    this.options = { ...Truncater.defaultOptions, ...options };
+  }
+
+  truncate(str, options = {}) {
+    const { length, separator } = { ...this.options, ...options };
+    if (str.length <= length) return str;
+    const truncated = str.slice(0, length);
+    return `${truncated}${separator}`;
+  }
+  // END
+}
