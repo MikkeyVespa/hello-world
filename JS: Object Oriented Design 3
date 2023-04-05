@@ -1,0 +1,42 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+class Url {
+  constructor(url) {
+    this.url = new URL(url);
+  }
+
+  getScheme() {
+    return this.url.protocol.replace(':', '');
+  }
+
+  getHostName() {
+    return this.url.hostname;
+  }
+
+  getQueryParams() {
+    const entries = this.url.searchParams.entries();
+    const result = {};
+    for (const [key, value] of entries) {
+      result[key] = value;
+    }
+    return result;
+  }
+
+  getQueryParam(name, defaultValue = null) {
+    return this.url.searchParams.get(name) ?? defaultValue;
+  }
+
+  toString() {
+    return this.url.toString();
+  }
+
+  equals(url) {
+    return this.toString() === url.toString();
+  }
+}
+
+export default Url;
+// END
