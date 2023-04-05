@@ -1,0 +1,9 @@
+my decision
+
+// @ts-check
+export const cons = (x, y) => (f) => f(x, y);
+
+// BEGIN (write your solution here)
+export const car = cons((x) => x);
+export const cdr = cons((x, y) => y);
+// END
