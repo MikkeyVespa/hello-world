@@ -1,0 +1,38 @@
+my decision
+
+// BEGIN (write your solution here)
+export default function normalize(cities) {
+  const result = cities
+    .map(({ name, country }) => (
+      { name: name.trim().toLowerCase(), country: country.trim().toLowerCase() }))
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .reduce((acc, { name, country }) => {
+      const cities = acc[country] || new Set();
+      cities.add(name);
+      return { ...acc, [country]: cities };
+    }, {});
+  for (const country in result) {
+    result[country] = Array.from(result[country]);
+  }
+  return result;
+}
+// END
+
+
+
+
+teacher's decision
+
+// BEGIN
+export default (data) => data
+  .map(({ name, country }) => ({ city: name.toLowerCase(), country: country.toLowerCase() }))
+  .map(({ city, country }) => ({ city: city.trim(), country: country.trim() }))
+  .map(({ city, country }) => [country, city])
+  .sort() // sort countries and cities
+  .reduce((acc, [country, city]) => {
+    const citiesAcc = acc[country] ?? [];
+    const cities = citiesAcc.concat(city);
+    const uniqueCities = new Set(cities);
+    return { ...acc, [country]: [...uniqueCities] };
+  }, {});
+// END
