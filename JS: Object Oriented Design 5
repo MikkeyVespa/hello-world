@@ -1,0 +1,55 @@
+my decision
+
+// @ts-check
+
+import yup from 'yup';
+
+const genres = [
+  'drama', 'horror', 'fantasy', 'classic',
+];
+
+// BEGIN (write your solution here)
+const bookSchema = yup.object().shape({
+  name: yup.string().required(),
+  author: yup.string().required(),
+  pagesCount: yup.number().positive(),
+  link: yup.string().url().notOneOf(['']),
+  genre: yup.string().oneOf(genres),
+});
+
+export default function getInvalidBooks(books) {
+  return books.filter((book) => {
+    try {
+      bookSchema.validateSync(book);
+      return false;
+    } catch (error) {
+      return true;
+    }
+  });
+}
+// END
+
+
+teacher's decision
+
+// @ts-check
+
+import yup from 'yup';
+
+const genres = [
+  'drama', 'horror', 'fantasy', 'classic',
+];
+
+// BEGIN
+export default (books) => {
+  const schema = yup.object().shape({
+    name: yup.string().required(),
+    author: yup.string().required(),
+    pagesCount: yup.number().positive(),
+    link: yup.string().min(1).url(),
+    genre: yup.string().oneOf(genres),
+  });
+
+  return books.filter((book) => !schema.isValidSync(book));
+};
+// END
