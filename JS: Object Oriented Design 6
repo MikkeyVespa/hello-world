@@ -1,0 +1,59 @@
+my decision
+
+/* eslint-disable no-param-reassign */
+
+// BEGIN (write your solution here)
+export default function protect(obj) {
+  return new Proxy(obj, {
+    get(target, prop) {
+      if (prop.startsWith('_') || !(prop in target)) {
+        throw new Error(`Access denied to property "${prop}"`);
+      }
+      const value = target[prop];
+      return typeof value === 'function' ? value.bind(target) : value;
+    },
+    set(target, prop, value) {
+      if (prop.startsWith('_') || !(prop in target)) {
+        throw new Error(`Access denied to property "${prop}"`);
+      }
+      target[prop] = value;
+      return true;
+    },
+  });
+}
+// END
+
+
+teacher's decision
+
+/* eslint-disable no-param-reassign */
+
+// BEGIN
+const validateProperty = (target, name) => {
+  if (!(name in target)) {
+    throw new Error(`Property "${name}" doesn't exist`);
+  }
+  if (name.startsWith('_')) {
+    throw new Error(`Property "${name}" is protected`);
+  }
+};
+
+const protect = (obj) => new Proxy(obj, {
+  get: (target, name) => {
+    validateProperty(target, name);
+    const property = target[name];
+
+    return (typeof property === 'function') // если свойство - это метод, то необходимо привязать его
+      ? property.bind(obj) // к контексту оригинального объекта, иначе метод вызовется на прокси
+      : property;
+  },
+  set: (target, name, value) => {
+    validateProperty(target, name);
+    target[name] = value;
+
+    return true;
+  },
+});
+
+export default protect;
+// END
