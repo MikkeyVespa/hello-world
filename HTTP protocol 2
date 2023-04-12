@@ -1,0 +1,11 @@
+my decision
+
+//write on the command line
+telnet localhost 8080
+
+//insert query
+GET / HTTP/1.1
+host: hexlet.local
+
+//if we want to close at once add command
+Connection: close
