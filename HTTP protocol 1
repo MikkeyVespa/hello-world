@@ -1,0 +1,8 @@
+//write on the command line
+telnet localhost 8080
+
+//insert query
+GET /about HTTP/1.0
+
+insert into solution
+GET /about HTTP/1.0
