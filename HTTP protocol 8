@@ -1,0 +1,26 @@
+my decision
+
+//insert query
+GET /admin HTTP/1.1
+HOST: hexlet.local
+//To encode our username and password, we write the command on the command line: printf 'username:password' | base64
+Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+
+//write on the command line
+telnet localhost 8080
+
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+GET /admin HTTP/1.1
+HOST: hexlet.local
+Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+
+HTTP/1.1 200 OK
+connection: close
+content-type: text/plain; charset=utf-8
+content-length: 15
+Date: Thu, 13 Apr 2023 15:57:09 GMT
+
+Access granted
+Connection closed by foreign host.
