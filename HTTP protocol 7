@@ -1,0 +1,22 @@
+my decision
+
+//insert query
+POST /session/new HTTP/1.1
+HOST: hexlet.local
+
+//write on the command line
+telnet localhost 8080
+
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+POST /session/new HTTP/1.1
+HOST: hexlet.local
+
+HTTP/1.1 302 Found
+connection: close
+location: /
+content-length: 0
+Date: Thu, 13 Apr 2023 15:42:27 GMT
+
+Connection closed by foreign host.
