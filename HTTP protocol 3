@@ -1,0 +1,12 @@
+my decision
+
+//write on the command line
+telnet localhost 8080
+
+//insert query
+POST /upload HTTP/1.1
+Host: hexlet.local
+Content-Type: text/plain
+Content-Length: 15
+
+my request body
