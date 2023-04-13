@@ -1,0 +1,43 @@
+my decision
+
+//insert query
+GET /stream HTTP/1.1
+Host: hexlet.local
+
+//write on the command line
+telnet localhost 8080
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+GET /stream HTTP/1.1
+Host: hexlet.local
+
+HTTP/1.1 200 OK
+transfer-encoding: chunked
+connection: close
+content-type: text/html
+Date: Thu, 13 Apr 2023 13:58:25 GMT
+
+72
+Ofefov zojaz ubipentih ziconak cudo lo fod ni mumfam ovu gefdegmim apcije kogig turpin elowos co kuvjupcid wojhuz.
+48
+Ibozi af ek orceehu tiad saru buwaroj poulko owsadges ufa zi johede ene.
+44
+Udi iku ta pa rozup nu afose kafpem onvoji etivi ladopo ibfu uc ecu.
+46
+Suvke hodozazif cidda ohuv fikug lof so ulcog majaci uv lumzak vogenu.
+53
+Hazuk ludnijne teneg zeb hud zuz dizuhpi fakijhil do vafgetu rob ohikudfeb rovraju.
+5b
+Jo mabow kezba dawulka luabauk awulizko faz zuhafha lestoz zucik madogesin vu hiwew rimfif.
+39
+Al aso gikle ho barem go ra uheti dubde re wef bakronuwe.
+45
+Me nu pobecus nekmubur ravzuk fih joc cupre lufgebu ugo koncoin zafo.
+46
+Lu lo zusutivu ciw vuul ki si me cenkogna kek dob ap toccugtu kic zoz.
+4f
+Focwomtam hoh diwcam noud akeja nebta na uceciaco com pioposi ohisoseb bal hub.
+0
+
+Connection closed by foreign host.
