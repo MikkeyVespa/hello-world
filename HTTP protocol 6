@@ -1,0 +1,8 @@
+my decision
+
+//insert query
+GET /?key=value&another_key=another_value HTTP/1.1
+Host: hexlet.local
+
+//write on the command line
+telnet localhost 8080
