@@ -1,0 +1,9 @@
+my decision
+
+//insert query
+GET /account HTTP/1.1
+HOST: hexlet.local
+cookie: name=user; secret=secret_hash;
+
+//write on the command line
+telnet localhost 8080
