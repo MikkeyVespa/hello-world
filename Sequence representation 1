@@ -1,0 +1,75 @@
+my decision
+
+// @ts-check
+// eslint-disable-next-line
+import { l, cons as consList, head, tail, isEmpty, toString as listToString } from '@hexlet/pairs-data';
+
+// BEGIN (write your solution here)
+export function has(list, value) {
+  if (isEmpty(list)) {
+    return false;
+  }
+
+  if (head(list) === value) {
+    return true;
+  }
+
+  return has(tail(list), value);
+}
+
+export function reverse(list) {
+  let result = null;
+  let reverseList = list;
+  while (!isEmpty(reverseList)) {
+    result = consList(head(reverseList), result);
+    reverseList = tail(reverseList);
+  }
+
+  return result;
+}
+
+export function concat(list1, list2) {
+  if (isEmpty(list1)) {
+    return list2;
+  }
+
+  return consList(head(list1), concat(tail(list1), list2));
+}
+// END
+
+
+
+teacher's decision
+
+// @ts-check
+// eslint-disable-next-line
+import { l, cons as consList, head, tail, isEmpty, toString as listToString } from '@hexlet/pairs-data';
+
+// BEGIN
+export const has = (list, element) => {
+  if (isEmpty(list)) {
+    return false;
+  }
+  if (head(list) === element) {
+    return true;
+  }
+
+  return has(tail(list), element);
+};
+
+export const reverse = (list) => {
+  const iter = (items, acc) => (
+    isEmpty(items) ? acc : iter(tail(items), consList(head(items), acc))
+  );
+
+  return iter(list, l());
+};
+
+export const concat = (list1, list2) => {
+  if (isEmpty(list1)) {
+    return list2;
+  }
+
+  return consList(head(list1), concat(tail(list1), list2));
+};
+// END
