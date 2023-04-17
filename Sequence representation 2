@@ -1,0 +1,27 @@
+my decision
+
+// @ts-check
+// eslint-disable-next-line
+import { cons, car, cdr, toString as pairToString } from '@hexlet/pairs';
+// eslint-disable-next-line
+import { l, isEmpty, head, tail, cons as consList, toString as listToString } from '@hexlet/pairs-data';
+
+export const make = () => l();
+// BEGIN (write your solution here)
+export const node = (name, content) => cons(name, content);
+
+export const getName = (tag) => car(tag);
+export const getValue = (tag) => cdr(tag);
+
+export const append = (list, tag) => consList(tag, list);
+
+export const toString = (list) => {
+  if (isEmpty(list)) {
+    return '';
+  }
+  const elem = head(list);
+  const tag = `<${getName(elem)}>${getValue(elem)}</${getName(elem)}>`;
+  return `${toString(tail(list))}${tag}`;
+};
+
+// END
