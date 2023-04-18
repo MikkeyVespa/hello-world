@@ -1,0 +1,100 @@
+my decision
+
+// @ts-check
+import {
+  l, isEmpty, head, tail, cons as consList,
+} from '@hexlet/pairs-data';
+
+import {
+  getName, getValue, node, is,
+} from '@hexlet/html-tags';
+
+import { reverse as reverseStr } from './strings.js';
+
+// BEGIN (write your solution here)
+export const map = (func, elements) => {
+  if (isEmpty(elements)) {
+    return l();
+  }
+
+  const newElement = func(head(elements));
+  return consList(newElement, map(func, tail(elements)));
+};
+
+export const mirror = (elements) => map((element) => node(getName(element), reverseStr(getValue(element))), elements);
+// END
+
+export const b2p = (elements) => {
+  if (isEmpty(elements)) {
+    return l();
+  }
+
+  let newElement;
+  const element = head(elements);
+  if (is('blockquote', element)) {
+    newElement = node('p', getValue(element));
+  } else {
+    newElement = element;
+  }
+
+  return consList(newElement, b2p(tail(elements)));
+};
+
+
+
+
+teacher's decision
+
+// @ts-check
+import {
+  l, isEmpty, head, tail, cons as consList, reverse,
+} from '@hexlet/pairs-data';
+
+import {
+  getName, getValue, node, is,
+} from '@hexlet/html-tags';
+
+import { reverse as reverseStr } from './strings.js';
+
+// BEGIN
+// Рекурсивный процесс
+// export const map = (func, elements) => {
+//   if (isEmpty(elements)) {
+//     return l();
+//   }
+
+//   return cons(func(head(elements)), map(func, tail(elements)));
+// };
+
+// Итеративный процесс (рекурсивно)
+export const map = (func, elements) => {
+  const iter = (items, acc) => {
+    if (isEmpty(items)) {
+      return reverse(acc);
+    }
+    return iter(tail(items), consList(func(head(items)), acc));
+  };
+
+  return iter(elements, l());
+};
+
+export const mirror = (elements) => (
+  map((element) => node(getName(element), reverseStr(getValue(element))), elements)
+);
+// END
+
+export const b2p = (elements) => {
+  if (isEmpty(elements)) {
+    return l();
+  }
+
+  let newElement;
+  const element = head(elements);
+  if (is('blockquote', element)) {
+    newElement = node('p', getValue(element));
+  } else {
+    newElement = element;
+  }
+
+  return consList(newElement, b2p(tail(elements)));
+};
