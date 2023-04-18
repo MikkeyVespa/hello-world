@@ -1,0 +1,60 @@
+my decision
+
+// @ts-check
+import {
+  l, isEmpty, head, tail, cons as consList,
+} from '@hexlet/pairs-data';
+
+import { getValue, is, map } from '@hexlet/html-tags';
+
+// BEGIN (write your solution here)
+export const filter = (func, elements) => {
+  if (isEmpty(elements)) {
+    return l();
+  }
+
+  const current = head(elements);
+  const tailElements = tail(elements);
+  if (func(current)) {
+    return consList(current, filter(func, tailElements));
+  }
+  return filter(func, tailElements);
+};
+
+export const quotes = (elements) => {
+  const filtered = filter((element) => is('blockquote', element), elements);
+  const result = map(getValue, filtered);
+  return result;
+};
+// END
+
+export const removeHeaders = (elements) => {
+  if (isEmpty(elements)) {
+    return l();
+  }
+
+  const element = head(elements);
+  const tailElements = tail(elements);
+  if (is('h1', element)) {
+    return removeHeaders(tailElements);
+  }
+  return consList(element, removeHeaders(tailElements));
+};
+
+
+
+
+teacher's decision
+
+export const filter = (func, elements) => {
+  const iter = (items, acc) => {
+    if (isEmpty(items)) {
+      return reverse(acc);
+    }
+    const item = head(items);
+    const newAcc = func(item) ? consList(item, acc) : acc;
+    return iter(tail(items), newAcc);
+  };
+
+  return iter(elements, l());
+};
