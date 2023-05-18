@@ -1,0 +1,14 @@
+// @ts-check
+/* eslint-disable import/prefer-default-export */
+import fsp from 'fs/promises';
+
+// BEGIN
+// читаем содержимое файла
+export const reverse = (filepath) => fsp.readFile(filepath, 'utf-8')
+// работаем с содержимым: переворачиваем строку
+// и записываем результат в тот же файл
+  .then((data) => {
+    const preparedData = data.split('\n').reverse().join('\n');
+    return fsp.writeFile(filepath, preparedData);
+  });
+// END
