@@ -1,0 +1,48 @@
+my decision
+
+// @ts-check
+/* eslint-disable import/prefer-default-export */
+import fsp from 'fs/promises';
+
+// BEGIN (write your solution here)
+export function getTypes(paths) {
+  const promises = paths.map(path =>
+    fsp.stat(path)
+      .then(stats => {
+        if (stats.isDirectory()) {
+          return 'directory';
+        }
+        return 'file';
+      })
+      .catch(() => null));
+
+  return Promise.all(promises);
+}
+// END
+
+
+teacher's decision
+
+// @ts-check
+/* eslint-disable import/prefer-default-export */
+import fsp from 'fs/promises';
+
+// BEGIN
+const getTypeName = (stat) => (stat.isDirectory() ? 'directory' : 'file');
+
+export const getTypes = (filesPath) => {
+  // функция получает путь и аккумулятор из reduce, выполняет попытку получить stat,
+  // добавляет в аккумулятор строку или null и возвращает обновлённый аккумулятор
+  const processPath = (filepath, result) => fsp.stat(filepath)
+    .then((data) => [...result, getTypeName(data)])
+    .catch(() => [...result, null]);
+
+  const resultPromise = filesPath.reduce(
+    // promise - это аккумулятор, обёрнутый в промис, поэтому на нём вызывается then
+    // result - предыдущее значение аккумулятора
+    (promise, filepath) => promise.then((result) => processPath(filepath, result)),
+    Promise.resolve([]),
+  );
+  return resultPromise;
+};
+// END
