@@ -1,0 +1,11 @@
+// @ts-check
+/* eslint-disable import/prefer-default-export */
+
+import fsp from 'fs/promises';
+
+// BEGIN
+export const touch = (filepath) => fsp.access(filepath)
+  // в случае, если файла не существует, функция выбрасывает ошибку
+  // ловим эту ошибку и создаем файл
+  .catch(() => fsp.writeFile(filepath, ''));
+// END
