@@ -1,0 +1,24 @@
+my decision
+
+// @ts-check
+/* eslint-disable no-promise-executor-return */
+// BEGIN (write your solution here)
+function wait(time) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, time);
+  });
+}
+export default wait;
+// END
+
+
+teacher's decision
+
+// @ts-check
+/* eslint-disable no-promise-executor-return */
+// BEGIN
+// создаем промис, резолвящийся лишь через заданное количество времени
+export default (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+// END
