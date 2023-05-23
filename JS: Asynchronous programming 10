@@ -1,0 +1,25 @@
+// @ts-check
+/* eslint-disable import/prefer-default-export */
+
+import path from 'path';
+import _ from 'lodash';
+import fsp from 'fs/promises';
+
+// BEGIN
+export const getDirectorySize = (dirpath) => {
+  // читаем список имен файлов в папке
+  const promise = fsp.readdir(dirpath).then((filenames) => {
+    // строим путь к файлам
+    const filepaths = filenames.map((name) => path.join(dirpath, name));
+    // извлекаем метаданные о файлах
+    const promises = filepaths.map((filePath) => fsp.stat(filePath));
+    // превращаем массив промисов (promises) в один-единственный промис,
+    // возвращающий массив
+    return Promise.all(promises);
+  });
+
+  // из промиса получаем массив stats
+  // суммируем размеры файлов в директории
+  return promise.then((stats) => _.sumBy(stats.filter((stat) => stat.isFile()), 'size'));
+};
+// END
