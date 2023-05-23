@@ -1,0 +1,23 @@
+// @ts-check
+/* eslint-disable import/prefer-default-export */
+import fsp from 'fs/promises';
+
+// BEGIN
+export const exchange = async (filepath1, filepath2) => {
+  // Читаем оба файла
+  const reading1 = fsp.readFile(filepath1);
+  const reading2 = fsp.readFile(filepath2);
+  // Делаем массив из двух промисов, превращаем его в один промис
+  // резолвящийся в массив при помощи Promise.all(),
+  // и деструктурируем этот зарезолвленный массив
+  const [data1, data2] = await Promise.all([reading1, reading2]);
+  // Меняем содержимое файлов (мутируем их)
+  const writing1 = fsp.writeFile(filepath1, data2);
+  const writing2 = fsp.writeFile(filepath2, data1);
+  await Promise.all([writing1, writing2]);
+  // Выполняем эти операции параллельно. Но можно
+  // сделать это и последовательно:
+  // await fsp.writeFile(filepath1, data2);
+  // await fsp.writeFile(filepath2, data1);
+};
+// END
