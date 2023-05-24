@@ -1,0 +1,17 @@
+// @ts-check
+import { /* eslint-disable */
+  l, cons as consList, isList, isEmpty, head, tail, concat, toString as listToString,
+} from '@hexlet/pairs-data';
+
+import {
+  is, hasChildren, children, filter, reduce, toString as htmlToString,
+} from '@hexlet/html-tags'; /* eslint-enable */
+
+// BEGIN (write your solution here)
+const select = (tagName, html) => reduce((element, acc) => {
+  const acc2 = hasChildren(element) ? concat(select(tagName, children(element)), acc) : acc;
+  return is(tagName, element) ? consList(element, acc2) : acc2;
+}, l(), html);
+
+export default select;
+// END
