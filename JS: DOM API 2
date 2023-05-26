@@ -1,0 +1,8 @@
+// @ts-check
+
+// BEGIN (write your solution here)
+const data = document.body.innerHTML;
+const str = data.trim().split('\n');
+const res = str.map((el) => `<p>${el}</p>`);
+document.body.innerHTML = res.join('');
+// END
