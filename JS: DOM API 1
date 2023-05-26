@@ -1,0 +1,22 @@
+my decision
+
+// BEGIN (write your solution here)
+export default function (url) {
+  location.href = url;
+  const curLoc = location.href;
+  const userAg = navigator.userAgent.split('/')[0];
+  return `/${userAg}/5.0 ${curLoc}`;
+}
+// END
+
+
+teacher's decision
+
+// BEGIN
+export default (href) => {
+  window.location.href = href;
+  const { userAgent } = window.navigator;
+  const [agentName] = userAgent.split(' ');
+  return `${agentName} ${window.location.href}`;
+};
+// END
