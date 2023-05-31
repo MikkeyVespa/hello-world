@@ -1,0 +1,16 @@
+// BEGIN (write your solution here)
+export default (root) => {
+  const children = Array.from(root.parentNode.body.children);
+  return children
+    .filter((element) => element.tagName === 'P')
+    .map((element) => element.innerHTML.trim());
+};
+// END
+
+
+/* eslint no-console: "off" */
+// BEGIN (write your solution here)
+import extractor from './extractor.js';
+
+console.log(extractor(document.documentElement));
+// END
