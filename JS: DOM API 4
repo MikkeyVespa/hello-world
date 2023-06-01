@@ -1,0 +1,57 @@
+my decision
+
+export default (document) => {
+  // BEGIN (write your solution here)
+  const content = document.querySelector('.content');
+  const titleElement = content.querySelector('h1');
+  const descriptionEl = content.querySelector('.description');
+  const articleElements = content.querySelectorAll('.links > div');
+
+  const data = {
+    title: titleElement.textContent.trim(),
+    description: descriptionEl.textContent.trim(),
+    items: [],
+  };
+  articleElements.forEach((articleElement) => {
+    const articleTitleEl = articleElement.querySelector('h2 > a');
+    const articleDescriptionEl = articleElement.querySelector('p');
+    const article = {
+      title: articleTitleEl.textContent.trim(),
+      description: articleDescriptionEl.textContent.trim(),
+    };
+    data.items.push(article);
+  });
+  return data;
+  // END
+};
+
+
+teacher's decision
+
+export default (document) => {
+  // BEGIN
+  const root = document.querySelector('.content');
+
+  const categoryTitleElement = root.querySelector('h1');
+  const categoryTitle = categoryTitleElement.innerHTML;
+  const categoryDescriptionElement = root.querySelector('.description');
+  const categoryDescription = categoryDescriptionElement.innerHTML;
+
+  const itemElements = root.querySelectorAll('.links div');
+  const items = Array.from(itemElements).map((element) => {
+    const titleElement = element.querySelector('a');
+    const descriptionElement = element.querySelector('p');
+
+    return {
+      title: titleElement.innerHTML,
+      description: descriptionElement.innerHTML,
+    };
+  });
+
+  return {
+    title: categoryTitle,
+    description: categoryDescription,
+    items,
+  };
+  // END
+};
