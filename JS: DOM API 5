@@ -1,0 +1,43 @@
+my decision
+
+// @ts-check
+
+// BEGIN (write your solution here)
+export default function prettify(doc) {
+  const divElems = doc.getElementsByTagName('div');
+  for (const divElem of divElems) {
+    const childNodes = divElem.childNodes;
+    for (const node of childNodes) {
+      if (node instanceof Text) {
+        const trimmedText = node.textContent.trim();
+        if (trimmedText !== '') {
+          const p = document.createElement('p');
+          p.textContent = trimmedText;
+          node.replaceWith(p);
+        }
+      }
+    }
+  }
+}
+// END
+
+
+teacher's decision
+
+// @ts-check
+
+// BEGIN
+export default (document) => {
+  const divs = [...document.getElementsByTagName('div')];
+  divs.forEach((div) => {
+    const textNodes = [...div.childNodes]
+      .filter((child) => child instanceof Text)
+      .filter((child) => child.textContent.trim() !== '');
+    textNodes.forEach((node) => {
+      const p = document.createElement('p');
+      p.textContent = node.textContent;
+      node.replaceWith(p);
+    });
+  });
+};
+// END
