@@ -1,0 +1,17 @@
+// @ts-check
+
+export default () => {
+  // BEGIN (write your solution here)
+  const button = document.getElementById('alert-generator');
+  const alertContainer = document.querySelector('.alerts');
+  let counter = 1;
+
+  button.addEventListener('click', () => {
+    const alertElement = document.createElement('div');
+    alertElement.classList.add('alert', 'alert-primary');
+    alertElement.textContent = `Alert ${counter}`;
+    alertContainer.prepend(alertElement);
+    counter += 1;
+  });
+  // END
+};
