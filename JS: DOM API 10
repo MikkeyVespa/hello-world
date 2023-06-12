@@ -1,0 +1,65 @@
+my decision
+
+// @ts-check
+
+const generateField = () => {
+  const tableEl = document.createElement('table');
+
+  tableEl.className = 'table-bordered';
+  for (let i = 0; i < 3; i += 1) {
+    const row = tableEl.insertRow();
+    for (let j = 0; j < 3; j += 1) {
+      const cell = row.insertCell();
+      cell.className = 'py-2 px-3';
+      cell.innerHTML = '<span class="invisible">s</span>';
+    }
+  }
+  return tableEl;
+};
+
+// BEGIN (write your solution here)
+export default () => {
+  const rootEl = document.querySelector('.root');
+  const field = generateField();
+  let currentSymbol = 'x';
+
+  const handleClick = (event) => {
+    const cell = event.target;
+
+    if (cell.textContent === 'x' || cell.textContent === 'o') {
+      currentSymbol = currentSymbol === 'x' ? 'o' : 'x';
+      return;
+    }
+
+    cell.textContent = currentSymbol;
+    currentSymbol = currentSymbol === 'x' ? 'o' : 'x';
+  };
+
+  field.addEventListener('click', handleClick);
+  rootEl.appendChild(field);
+};
+// END
+
+
+teacher's decision
+
+// BEGIN
+export default () => {
+  const tableEl = generateField();
+
+  let currentSymbol = 'x';
+  const switchPlayer = () => {
+    currentSymbol = currentSymbol === 'x' ? 'o' : 'x';
+  };
+
+  tableEl.addEventListener('click', (e) => {
+    if (e.target.textContent === 's') {
+      e.target.textContent = currentSymbol;
+    }
+    switchPlayer();
+  });
+
+  const root = document.querySelector('.root');
+  root.append(tableEl);
+};
+// END
