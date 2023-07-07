@@ -1,0 +1,77 @@
+my decision:
+
+/* eslint-disable no-param-reassign */
+// @ts-check
+
+// BEGIN (write your solution here)
+export function culc() {
+  const form = document.querySelector('.form-inline');
+  const numberInput = document.querySelector('.form-control');
+  const resetButton = document.querySelector('button[type="reset"]');
+  const resDiv = document.getElementById('result');
+
+  let result = 0;
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const number = parseInt(numberInput.value, 10);
+    result += number;
+    resDiv.textContent = result;
+    form.reset();
+    numberInput.focus();
+  }
+
+  function handleFormReset(event) {
+    result = 0;
+    resDiv.textContent = result;
+    form.reset();
+    numberInput.focus();
+    event.preventDefault();
+  }
+
+  form.addEventListener('submit', handleFormSubmit);
+  resetButton.addEventListener('click', handleFormReset);
+  numberInput.focus();
+}
+
+export default culc;
+// END
+
+
+teacher's decision:
+
+/* eslint-disable no-param-reassign */
+// @ts-check
+
+// BEGIN
+// повторяющийся код удобно вынести в отдельную функцию
+const render = (state, formEl, inputEl, resultEl) => {
+  formEl.reset();
+  inputEl.focus();
+  resultEl.textContent = state;
+};
+
+export default () => {
+  // состояние относится к уровню приложения
+  let state = 0;
+
+  const formEl = document.querySelector('form');
+  const inputEl = document.querySelector('input[type=number]');
+  const resetEl = document.querySelector('button');
+  const resultEl = document.querySelector('#result');
+
+  formEl.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    state += parseInt(data.get('number'), 10);
+    render(state, formEl, inputEl, resultEl);
+  });
+
+  resetEl.addEventListener('click', () => {
+    state = 0;
+    render(state, formEl, inputEl, resultEl);
+  });
+
+  inputEl.focus();
+};
+// END
