@@ -1,0 +1,63 @@
+my decision:
+
+// @ts-check
+
+import getFunction from '../functions.js';
+
+const buildUser = getFunction();
+
+// BEGIN (write your solution here)
+test('structure', async () => {
+  const obj = buildUser();
+  const expectedObj = {
+    email: expect.any(String),
+    firstName: expect.any(String),
+    lastName: expect.any(String),
+  };
+  expect(obj).toEqual(expect.objectContaining(expectedObj));
+});
+test('data change', async () => {
+  const firstUser = buildUser();
+  const secondUser = buildUser();
+  expect(firstUser).not.toEqual(secondUser);
+});
+test('parameter setting', async () => {
+  const setName = 'Jhon Gotti';
+  const user = buildUser({ firstName: setName });
+  expect(user).toEqual(expect.objectContaining({ firstName: setName }));
+});
+// END
+
+
+teacher's decision:
+
+// @ts-check
+
+import getFunction from '../functions.js';
+
+const buildUser = getFunction();
+
+// BEGIN
+test('buildUser fields', () => {
+  const user1 = buildUser();
+  expect(user1).toEqual(expect.objectContaining({
+    email: expect.any(String),
+    firstName: expect.any(String),
+    lastName: expect.any(String),
+  }));
+});
+
+test('buildUser random', () => {
+  const user1 = buildUser();
+  const user2 = buildUser();
+  expect(user1).not.toEqual(user2);
+});
+
+test('buildUser override', () => {
+  const newData1 = {
+    email: 'test@email.com',
+  };
+  const user1 = buildUser(newData1);
+  expect(user1).toMatchObject(newData1);
+});
+// END
