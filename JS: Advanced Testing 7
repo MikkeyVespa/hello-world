@@ -1,0 +1,32 @@
+// @ts-check
+
+import nock from 'nock';
+import getFunction from '../functions.js';
+
+const getUserMainLanguage = getFunction();
+
+nock.disableNetConnect();
+
+// BEGIN (write your solution here)
+test('getUserMainLanguage', async () => {
+  const responseData = [{ language: 'php' }, { language: 'javascript' }, { language: 'javascript' }];
+
+  nock(/api\.github\.com/)
+    .get('/users/MikkeyVespa/repos')
+    .reply(200, responseData);
+
+  const mainLanguage = await getUserMainLanguage('MikkeyVespa');
+  expect(mainLanguage).toEqual('javascript');
+});
+
+test('getUserMainLanguage empty', async () => {
+  const responseData = [];
+
+  nock(/api\.github\.com/)
+    .get('/users/MikkeyVespa/repos')
+    .reply(200, responseData);
+
+  const mainLanguage = await getUserMainLanguage('MikkeyVespa');
+  expect(mainLanguage).toBeNull();
+});
+// END
