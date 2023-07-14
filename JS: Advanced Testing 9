@@ -1,0 +1,17 @@
+// @ts-check
+
+import fc from 'fast-check';
+import getFunction from '../functions.js';
+
+const sort = getFunction();
+
+// BEGIN (write your solution here)
+test('sort', () => {
+  fc.assert(
+    fc.property(fc.array(fc.integer()), (numbers) => {
+      const sorted = sort(numbers);
+      expect(sorted).toBeSorted();
+    }),
+  );
+});
+// END
