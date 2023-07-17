@@ -1,0 +1,16 @@
+// @ts-check
+
+// BEGIN (write your solution here)
+const mapping = {
+  a: 'href',
+  link: 'href',
+  img: 'src',
+};
+
+export default function getLinks(tags) {
+  const filtered = tags.filter((tag) => Object.hasOwn(mapping, tag.name));
+  const filtredTags = filtered.map((tag) => tag[mapping[tag.name]]);
+
+  return filtredTags;
+}
+// END
