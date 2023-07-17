@@ -1,0 +1,15 @@
+import Node from './Node';
+
+// BEGIN (write your solution here)
+export default function reverse(list) {
+  let reverseList = null;
+  let currentList = list;
+
+  while (currentList) {
+    reverseList = new Node(currentList.getValue(), reverseList);
+    currentList = currentList.getNext();
+  }
+
+  return reverseList;
+}
+// END
