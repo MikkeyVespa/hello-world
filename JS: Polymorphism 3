@@ -1,0 +1,54 @@
+my decision:
+
+// @ts-check
+
+// BEGIN (write your solution here)
+const parseTags = (tag) => {
+  const attributes = Object.entries(tag)
+    .filter(([key]) => key !== 'name' && key !== 'tagType' && key !== 'body')
+    .map(([key, value]) => `${key}="${value}"`)
+    .join(' ');
+
+  if (tag.tagType === 'single') {
+    return `<${tag.name}${attributes ? ` ${attributes}` : ''}>`;
+  }
+  return `<${tag.name}${attributes ? ` ${attributes}` : ''}>${tag.body}</${tag.name}>`;
+};
+
+export default parseTags;
+// END
+
+
+
+teacher's decision:
+
+// @ts-check
+
+// BEGIN
+const excludedAttrs = ['name', 'tagType', 'body'];
+
+const buildAttrs = (tag) => (
+  Object.keys(tag)
+    .filter((attr) => !excludedAttrs.includes(attr))
+    .map((attr) => ` ${attr}="${tag[attr]}"`)
+    .join('')
+);
+
+const mapping = {
+  single: (tag) => {
+    const attrs = buildAttrs(tag);
+    return `<${tag.name}${attrs}>`;
+  },
+  pair: (tag) => {
+    const attrs = buildAttrs(tag);
+    return `<${tag.name}${attrs}>${tag.body}</${tag.name}>`;
+  },
+};
+
+const stringify = (tag) => {
+  const build = mapping[tag.tagType];
+  return build(tag);
+};
+
+export default stringify;
+// END
