@@ -1,0 +1,39 @@
+// @ts-check
+
+// BEGIN (write your solution here)
+export default function swapKeyValue(database) {
+  const data = database.toObject();
+  const entries = Object.entries(data);
+
+  entries.forEach(([key]) => database.unset(key));
+  entries.forEach(([key, value]) => database.set(value, key));
+}
+// END
+
+// @ts-check
+
+import _ from 'lodash';
+
+// BEGIN (write your solution here)
+export default class InMemoryKV {
+  constructor(initial = {}) {
+    this.database = _.cloneDeep(initial);
+  }
+
+  set(key, value) {
+    this.database[key] = value;
+  }
+
+  unset(key) {
+    delete this.database[key];
+  }
+
+  get(key, defaultValue = null) {
+    return _.get(this.database, key, defaultValue);
+  }
+
+  toObject() {
+    return _.cloneDeep(this.database);
+  }
+}
+// END
