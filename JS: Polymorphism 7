@@ -1,0 +1,56 @@
+// @ts-check
+
+// BEGIN (write your solution here)
+export default function getGreeting(user) {
+  if (user.isUser()) {
+    return `Hello ${user.getName()}!`;
+  }
+  return `Nice to meet you ${user.getName()}!`;
+}
+// END
+
+// @ts-check
+
+class User {
+  constructor(name) {
+    // BEGIN (write your solution here)
+
+    // END
+    this.name = name;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  // BEGIN (write your solution here)
+  isUser() {
+    return true;
+  }
+  // END
+}
+
+export default User;
+
+// @ts-check
+
+class Guest {
+  constructor() {
+    // BEGIN (write your solution here)
+
+    // END
+    this.name = 'Guest';
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  // BEGIN (write your solution here)
+  isUser() {
+    return false;
+  }
+  // END
+}
+
+export default Guest;
