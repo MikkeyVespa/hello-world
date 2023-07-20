@@ -1,0 +1,32 @@
+// @ts-check
+/* eslint no-console: 0 */
+
+import axios from 'axios';
+import WeatherService from '../WeatherService.js';
+
+// BEGIN (write your solution here)
+const weather = new WeatherService(axios);
+const cityName = process.argv[2];
+weather.lookUp(cityName).then((data) => {
+  const message = `Temperature in ${data.name}: ${data.temperature}C`;
+  console.log(message);
+});
+// END
+
+// @ts-check
+
+const apiUrl = 'http://localhost:8080/api/v2/';
+
+// BEGIN (write your solution here)
+export default class WeatherService {
+  constructor(httpClient) {
+    this.httpClient = httpClient;
+  }
+
+  async lookUp(cityName) {
+    const url = new URL(`cities/${cityName}`, apiUrl);
+    const response = await this.httpClient.get(url.toString());
+    return JSON.parse(response.data);
+  }
+}
+// END
