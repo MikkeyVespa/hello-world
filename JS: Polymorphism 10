@@ -1,0 +1,51 @@
+// @ts-check
+/* eslint-disable class-methods-use-this */
+
+// BEGIN (write your solution here)
+export default class JsonParser {
+  parse(data) {
+    return JSON.parse(data);
+  }
+}
+// END
+
+// @ts-check
+/* eslint-disable class-methods-use-this */
+
+import yaml from 'js-yaml';
+
+// BEGIN (write your solution here)
+export default class YamlParser {
+  parse(data) {
+    return yaml.load(data);
+  }
+}
+// END
+
+// @ts-check
+
+import path from 'path';
+import fs from 'fs';
+import JsonParser from './parsers/JsonParser.js';
+import YamlParser from './parsers/YamlParser.js';
+import Config from './Config.js';
+
+// BEGIN (write your solution here)
+const mapping = {
+  yaml: YamlParser,
+  yml: YamlParser,
+  json: JsonParser,
+};
+
+export default class ConfigFactory {
+  static factory(pathFile) {
+    const type = path.extname(pathFile).slice(1);
+    const parser = new mapping[type]();
+
+    const rawData = fs.readFileSync(pathFile).toString();
+    const data = parser.parse(rawData);
+
+    return new Config(data);
+  }
+}
+// END
