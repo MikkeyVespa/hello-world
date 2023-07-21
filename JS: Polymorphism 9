@@ -1,0 +1,85 @@
+// @ts-check
+/* eslint-disable class-methods-use-this */
+/* eslint-disable default-case */
+
+import Walking from './strategies/Walking.js';
+import Driving from './strategies/Driving.js';
+
+// BEGIN (write your solution here)
+class Navigator {
+  constructor(streets, type = 'walking') {
+    this.streets = streets;
+    if (type === 'walking') {
+      this.strategy = new Walking(this.streets);
+    } else {
+      this.strategy = new Driving(this.streets);
+    }
+    // switch (type) {
+    //   case 'walking':
+    //     this.strategy = new Walking(this.streets);
+    //     break;
+    //   case 'driving':
+    //     this.strategy = new Driving(this.streets);
+    //     break;
+    // }
+    [this.currentStreet] = this.streets;
+  }
+
+  goToNextTurn() {
+    this.currentStreet = this.strategy.getNextTurn(this.currentStreet);
+
+    return this.currentStreet;
+  }
+}
+// END
+
+export default Navigator;
+
+
+// @ts-check
+/* eslint-disable class-methods-use-this */
+
+// BEGIN (write your solution here)
+class Driving {
+  step = 2;
+
+  constructor(streets) {
+    this.streets = streets;
+  }
+
+  getNextTurn(currentStreet) {
+    const currentIndex = this.streets.indexOf(currentStreet) + this.step;
+    if (currentIndex > this.streets) {
+      return null;
+    }
+
+    return this.streets[currentIndex];
+  }
+}
+// END
+
+export default Driving;
+
+// @ts-check
+/* eslint-disable class-methods-use-this */
+
+// BEGIN (write your solution here)
+class Walking {
+  step = 1;
+
+  constructor(streets) {
+    this.streets = streets;
+  }
+
+  getNextTurn(currentStreet) {
+    const currentIndex = this.streets.indexOf(currentStreet) + this.step;
+    if (currentIndex > this.streets) {
+      return null;
+    }
+
+    return this.streets[currentIndex];
+  }
+}
+// END
+
+export default Walking;
