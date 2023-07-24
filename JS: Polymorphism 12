@@ -1,0 +1,20 @@
+// @ts-check
+/* eslint-disable class-methods-use-this */
+
+import generator from 'generate-password';
+
+export default class PasswordGeneratorAdapter {
+  // BEGIN (write your solution here)
+  generatePassword(length, options) {
+    const optionsDefault = {
+      uppercase: false,
+      numbers: false,
+      symbols: false,
+    };
+
+    const preparedOptions = Object.fromEntries(options.map((o) => [o, true]));
+    const finalOptions = { ...optionsDefault, ...preparedOptions, length };
+    return generator.generate(finalOptions);
+  }
+  // END
+}
