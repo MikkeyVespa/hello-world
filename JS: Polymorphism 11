@@ -1,0 +1,18 @@
+// @ts-check
+
+// BEGIN (write your solution here)
+export default class LabelTag {
+  constructor(textLabel, inputTag) {
+    this.textLabel = textLabel;
+    this.inputTag = inputTag;
+  }
+
+  render() {
+    return `<label>${this.textLabel}${this.inputTag}</label>`;
+  }
+
+  toString() {
+    return this.render();
+  }
+}
+// END
