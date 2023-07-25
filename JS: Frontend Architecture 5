@@ -1,0 +1,80 @@
+// @ts-check
+/* eslint-disable no-param-reassign */
+
+// BEGIN (write your solution here) (write your solution here)
+const render = (state, elem) => {
+  const elemName = elem.dataset.editableTarget;
+  elem.innerHTML = '';
+
+  const buildText = () => {
+    if (state.value === '') {
+      const i = document.createElement('i');
+      i.textContent = elemName;
+      return i;
+    }
+
+    return document.createTextNode(state.value);
+  };
+
+  const buildForm = () => {
+    const form = document.createElement('form');
+    const label = document.createElement('label');
+    label.setAttribute('for', elemName);
+    label.classList.add('sr-only');
+    label.textContent = elemName;
+    const input = document.createElement('input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('name', elemName);
+    input.setAttribute('id', elemName);
+    input.setAttribute('value', state.value);
+
+    const submit = document.createElement('input');
+    submit.setAttribute('type', 'submit');
+    submit.setAttribute('value', `Save ${elemName}`);
+    form.append(label, input, submit);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const value = formData.get(elemName).trim();
+      state.value = value;
+      state.mode = 'text';
+      render(state, elem);
+    });
+
+    return { form, input };
+  };
+
+  switch (state.mode) {
+    case 'text': {
+      const text = buildText();
+      elem.append(text);
+      break;
+    }
+    case 'form': {
+      const { form, input } = buildForm();
+      elem.append(form);
+      input.select();
+      break;
+    }
+    default:
+      throw new Error(`Unknown mode: ${state.mode}`);
+  }
+};
+
+export default () => {
+  const elems = document.querySelectorAll('[data-editable-target]');
+  elems.forEach((elem) => {
+    const state = {
+      mode: 'text',
+      value: '',
+    };
+
+    elem.addEventListener('click', () => {
+      if (state.mode === 'text') {
+        state.mode = 'form';
+        render(state, elem);
+      }
+    });
+  });
+};
+// END
