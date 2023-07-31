@@ -1,0 +1,24 @@
+export default class HTMLElement {
+  constructor(attributes = {}) {
+    this.attributes = attributes;
+  }
+
+  stringifyAttributes() {
+    // BEGIN (write your solution here)
+    const tag = Object.entries(this.attributes)
+      .map(([key, value]) => ` ${key}="${value}"`).join('');
+    return tag;
+    // END
+  }
+}
+
+import HTMLElement from './HTMLElement.js';
+
+// BEGIN (write your solution here)
+export default class HTMLHrElement extends HTMLElement {
+  toString() {
+    const hrTeg = this.stringifyAttributes();
+    return `<hr${hrTeg}>`;
+  }
+}
+// END
