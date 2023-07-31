@@ -1,0 +1,34 @@
+import HTMLElement from './HTMLElement.js';
+
+// BEGIN (write your solution here)
+class HTMLPairElement extends HTMLElement {
+  toString() {
+    const attrline = this.stringifyAttributes();
+    const body = this.getTextContent();
+    const tagName = this.getTagName();
+    return `<${tagName}${attrline}>${body}</${tagName}>`;
+  }
+
+  getTextContent() {
+    return this.body ?? '';
+  }
+
+  setTextContent(body) {
+    this.body = body;
+  }
+}
+// END
+export default HTMLPairElement;
+
+/* eslint-disable class-methods-use-this */
+
+import HTMLPairElement from './HTMLPairElement.js';
+
+// BEGIN (write your solution here)
+class HTMLDivElement extends HTMLPairElement {
+  getTagName() {
+    return 'div';
+  }
+}
+// END
+export default HTMLDivElement;
