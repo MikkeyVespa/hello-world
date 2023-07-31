@@ -1,0 +1,42 @@
+// BEGIN (write your solution here)
+import AppError from './errors/AppError.js';
+// END
+
+export const anyErrorCatcher = (errorHandler, errorInstance) => (error) => {
+  // BEGIN (write your solution here)
+  if (error instanceof errorInstance) {
+    return errorHandler(error);
+  }
+  throw error;
+  // END
+};
+
+export const appErrorCatcher = (errorHandler, errorInstance) => (error) => {
+  // BEGIN (write your solution here)
+  if (error instanceof errorInstance && error instanceof AppError) {
+    return errorHandler(error);
+  }
+  throw error;
+  // END
+};
+
+export const customErrorCatcher = (errorHandler, errorInstance) => (error) => {
+  // BEGIN (write your solution here)
+  if (!errorInstance && error.isCustomError) {
+    return errorHandler(error);
+  }
+  throw error;
+  // END
+};
+
+// BEGIN (write your solution here)
+const defaultCatcher = (err) => { throw err; };
+
+export default (action, catcher = defaultCatcher) => {
+  try {
+    return action();
+  } catch (err) {
+    return catcher(err);
+  }
+};
+// END
