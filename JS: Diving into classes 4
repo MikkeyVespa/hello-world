@@ -1,0 +1,30 @@
+import fs from 'fs';
+
+export default class FileInfo {
+  constructor(filePath) {
+    this.filePath = filePath;
+    this.fileStat = fs.statSync(filePath);
+  }
+
+  getSize() {
+    return this.fileStat.size;
+  }
+}
+
+import FileInfo from './FileInfo.js';
+
+// BEGIN (write your solution here)
+class SmartFileInfo extends FileInfo {
+  getSize(unit = 'b') {
+    const size = super.getSize();
+    switch (unit) {
+      case 'b':
+        return size;
+      case 'kb':
+        return size / 1024;
+      default: throw new Error('bbb');
+    }
+  }
+}
+// END
+export default SmartFileInfo;
