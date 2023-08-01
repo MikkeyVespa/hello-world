@@ -1,0 +1,45 @@
+import fs from 'fs';
+import NotExistsError from './errors/NotExistsError.js';
+import NotReadableError from './errors/NotReadableError.js';
+
+// BEGIN (write your solution here)
+class File {
+  constructor(filepath) {
+    this.filepath = filepath;
+  }
+
+  read() {
+    const { filepath } = this;
+    if (!fs.existsSync(filepath)) {
+      throw new NotExistsError('File doesnt exist');
+    }
+    try {
+      fs.accessSync(filepath, fs.constants.R_OK);
+    } catch (e) {
+      throw new NotReadableError('File doesnt read');
+    }
+    return fs.readFileSync(filepath);
+  }
+}
+// END
+export default File;
+
+/* eslint-disable import/prefer-default-export */
+
+import File from './File.js';
+
+export const readFiles = (filepaths) => {
+  // BEGIN (write your solution here)
+  const value = filepaths
+    .map((filepath) => new File(filepath))
+    .map((file) => {
+      try {
+        return file.read();
+      } catch (e) {
+        return null;
+      }
+    });
+
+  return value;
+  // END
+};
