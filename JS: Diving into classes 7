@@ -1,0 +1,33 @@
+import cheerio from 'cheerio';
+
+const stripTags = (tagString) => {
+  // BEGIN (write your solution here)
+  const $ = cheerio.load(tagString);
+  return $.text();
+  // END
+};
+
+// BEGIN (write your solution here)
+class SanitizerStripTagsDecorator {
+  constructor(sanitizer) {
+    this.sanitizer = sanitizer;
+  }
+
+  sanitize(text) {
+    const stripText = stripTags(text);
+    return this.sanitizer.sanitize(stripText);
+  }
+}
+// END
+export default SanitizerStripTagsDecorator;
+
+/* eslint-disable class-methods-use-this */
+
+// BEGIN (write your solution here)
+class Sanitizer {
+  sanitize(text) {
+    return text.trim();
+  }
+}
+// END
+export default Sanitizer;
