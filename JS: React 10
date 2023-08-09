@@ -1,0 +1,46 @@
+// @ts-check
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/static-property-placement */
+
+import React from 'react';
+import cn from 'classnames';
+
+// BEGIN (write your solution here)
+export default class Collapse extends React.Component {
+  constructor(props) {
+    super(props);
+    const { opened } = props;
+    this.state = { opened };
+  }
+
+  handleToggle = () => {
+    this.setState(({ opened }) => ({ opened: !opened }));
+  };
+
+  render() {
+    const { opened } = this.state;
+    const { text } = this.props;
+    const classes = cn({
+      collapse: true,
+      show: opened,
+    });
+
+    return (
+      <div>
+        <p>
+          <a className="btn btn-primary" data-bs-toggle="collapse" href="#" role="button" aria-expanded={opened} onClick={this.handleToggle}>Link with href</a>
+        </p>
+        <div className={classes}>
+          <div className="card card-body">
+            {text}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+Collapse.defaultProps = {
+  opened: true,
+};
+// END
