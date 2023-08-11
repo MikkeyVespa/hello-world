@@ -1,0 +1,82 @@
+// @ts-check
+/* eslint-disable react/prefer-stateless-function */
+
+import React from 'react';
+
+// BEGIN (write your solution here)
+export default class Item extends React.Component {
+  render() {
+    const { task, onRemove } = this.props;
+    return (
+      <div className="row">
+        <div className="col-auto">
+          <button type="button" className="btn btn-primary btn-sm" onClick={onRemove}>-</button>
+        </div>
+        <div className="col">{task.text}</div>
+      </div>
+    );
+  }
+}
+// END
+
+
+// @ts-check
+
+import { uniqueId } from 'lodash';
+import React from 'react';
+import Item from './Item.jsx';
+
+// BEGIN (write your solution here)
+export default class TodoBox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { newTaskText: '', tasks: [] };
+  }
+
+  handleChangeTask = ({ target: { value } }) => {
+    this.setState({ newTaskText: value });
+  };
+
+  handleRemoveTask = (removingId) => (e) => {
+    e.preventDefault();
+    const { tasks } = this.state;
+    this.setState({ tasks: tasks.filter(({ id }) => id !== removingId) });
+  };
+
+  handleSubmitForm = (e) => {
+    e.preventDefault();
+    const { tasks, newTaskText } = this.state;
+    const newTask = { id: uniqueId(), text: newTaskText };
+    this.setState({ newTaskText: '', tasks: [newTask, ...tasks] });
+  };
+
+  renderForm() {
+    const { newTaskText } = this.state;
+    return (
+      <form onSubmit={this.handleSubmitForm} className="d-flex">
+        <div className="me-3">
+          <input type="text" value={newTaskText} required className="form-control" placeholder="I am going..." onChange={this.handleChangeTask} />
+        </div>
+        <button type="submit" className="btn btn-primary">add</button>
+      </form>
+    );
+  }
+
+  render() {
+    const { tasks } = this.state;
+    return (
+      <div>
+        <div className="mb-3">
+          {this.renderForm()}
+        </div>
+        {tasks.map((task) => (
+          <div key={task.id}>
+            <Item task={task} onRemove={this.handleRemoveTask(task.id)} />
+            <hr />
+          </div>
+        ))}
+      </div>
+    );
+  }
+}
+// END
