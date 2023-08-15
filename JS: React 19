@@ -1,0 +1,30 @@
+// @ts-check
+
+import React from 'react';
+import Editor from '@toast-ui/editor';
+
+// BEGIN (write your solution here)
+export default class MarkdownEditor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.rootElement = React.createRef();
+  }
+
+  componentDidMount() {
+    const editor = new Editor({
+      el: this.rootElement.current,
+      hideModeSwitch: true,
+    });
+    editor.addHook('change', () => this.onChange(editor));
+  }
+
+  onChange = (editor) => {
+    const { onContentChange } = this.props;
+    onContentChange(editor.getMarkdown());
+  };
+
+  render() {
+    return <div ref={this.rootElement} />;
+  }
+}
+// END
