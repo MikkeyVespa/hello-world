@@ -1,0 +1,22 @@
+CREATE TABLE brands (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    discount INTEGER
+);
+
+CREATE TABLE cars (
+    id INTEGER PRIMARY KEY,
+    brand_id INTEGER REFERENCES brands (id),
+    model VARCHAR(255),
+    price INTEGER
+);
+
+INSERT INTO brands (id, name, discount)
+VALUES (1, 'bmw', 5), (2, 'nissan', 10);
+
+INSERT INTO cars VALUES
+(1, 1, 'm5', 5500000),
+(2, 1, 'x5m', 6000000),
+(3, 1, 'm1', 2500000),
+(4, 2, 'gt-r', 5000000),
+(5, 2, 'almera', 5500000);
