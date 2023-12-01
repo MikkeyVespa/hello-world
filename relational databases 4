@@ -1,0 +1,14 @@
+CREATE TABLE cars (
+    user_first_name varchar(80),
+    brand varchar(80),
+    model varchar(80)
+);
+
+INSERT INTO users VALUES ('arya');
+INSERT INTO users VALUES ('sansa');
+
+INSERT INTO cars VALUES ('arya', 'bmw', 'x1');
+INSERT INTO cars VALUES ('arya', 'bmw', 'x2');
+INSERT INTO cars VALUES ('sansa', 'audi', 'x1');
+INSERT INTO cars VALUES ('sansa', 'audi', 'x2');
+INSERT INTO cars VALUES ('sansa', 'audi', 'x3');
