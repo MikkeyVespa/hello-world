@@ -1,0 +1,21 @@
+CREATE TABLE countries (
+    id BIGINT PRIMARY KEY,
+    name VARCHAR(255)
+);
+CREATE TABLE country_regions (
+    id BIGINT PRIMARY KEY,
+    name VARCHAR(255),
+    country_id BIGINT REFERENCES countries (id)
+);
+CREATE TABLE country_region_cities (
+    id BIGINT PRIMARY KEY,
+    name VARCHAR(255),
+    country_region_id BIGINT REFERENCES country_regions (id)
+);
+
+INSERT INTO countries VALUES (1, 'Россия');
+INSERT INTO country_regions VALUES (1, 'Татарстан', 1);
+INSERT INTO country_regions VALUES (2, 'Самарская область', 1);
+INSERT INTO country_region_cities VALUES (1, 'Бугульма', 1);
+INSERT INTO country_region_cities VALUES (2, 'Казань', 1);
+INSERT INTO country_region_cities VALUES (3, 'Тольятти', 1);
