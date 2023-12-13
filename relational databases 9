@@ -1,0 +1,21 @@
+--noqa: disable=L010
+-- BEGIN (write your solution here)
+CREATE TABLE orders (
+    id bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    user_id bigint REFERENCES users (id),
+    created_at date
+);
+
+CREATE TABLE goods (
+    id bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    name varchar(255),
+    price bigint
+);
+
+CREATE TABLE order_items (
+    id bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    order_id bigint REFERENCES orders (id),
+    good_id bigint REFERENCES goods (id),
+    price bigint
+);
+-- END
