@@ -1,0 +1,16 @@
+--noqa: disable=L010
+-- BEGIN (write your solution here)
+create table users (
+    id bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    username text UNIQUE NOT NULL,
+    email text NOT NULL,
+    created_at timestamp NOT NULL
+);
+
+create table topics (
+    id bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    user_id bigint REFERENCES users (id),
+    body text NOT NULL,
+    created_at timestamp NOT NULL
+);
+-- END
