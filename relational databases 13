@@ -1,0 +1,7 @@
+--noqa: disable=L044
+-- BEGIN (write your solution here)
+select *
+from users
+where (created_at between '2018-11-23' and '2018-12-12') or (house = 'stark')
+order by created_at desc;
+-- END
