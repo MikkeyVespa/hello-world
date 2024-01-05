@@ -1,0 +1,3 @@
+select * from users
+where birthday < '03.10.2002'
+order by first_name limit 3 offset 2;
