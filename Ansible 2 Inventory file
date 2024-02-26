@@ -1,0 +1,14 @@
+[webservers]
+web[1:3].hexlet.io
+
+[jobservers]
+job1.hexlet.io
+; BEGIN (write your solution here)
+ job2.hexlet.io
+; END
+
+; BEGIN (write your solution here)
+[appservers:children]
+webservers
+jobservers
+; END
