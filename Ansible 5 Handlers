@@ -1,0 +1,22 @@
+- hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: execute command
+      command: echo 'write the nginx config file'
+      # BEGIN (write your solution here)
+      notify:
+        - restart nginx
+     # END
+
+    - meta: flush_handlers
+
+    - name: check handler
+      fail:
+        msg: 'Expected nginx to be restarted'
+      when: result is not defined
+
+  handlers:
+    - name: restart nginx
+      command: echo 'nginx restarting ...'
+      register: result
