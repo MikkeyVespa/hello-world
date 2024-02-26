@@ -1,0 +1,12 @@
+- hosts: all
+  gather_facts: no
+  # BEGIN (write your solution here)
+  vars:
+    http_port: 80
+  # END
+
+  tasks:
+    - name: Check http_port
+      ansible.builtin.fail:
+        msg: 'Expected http_port is 80'
+      when: http_port is not defined or http_port != 80
