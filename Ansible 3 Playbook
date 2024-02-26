@@ -1,0 +1,33 @@
+---
+
+-
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Copy file
+      ansible.builtin.copy:
+        src: files/hosts
+        dest: /tmp/hosts
+
+    - name: Set file mode for `/tmp/hosts` to 777
+      # BEGIN (write your solution here)
+      ansible.builtin.file:
+        path: /tmp/hosts
+        mode: '0777'
+      # END
+
+    # Tests
+    - name: Retrieve file status
+      ansible.builtin.stat:
+        path: /tmp/hosts
+        get_md5: false
+        get_checksum: false
+        get_attributes: false
+        get_mime: false
+      register: result
+
+    - name: Check file mode for `/tmp/hosts`
+      ansible.builtin.fail:
+        msg: "Expected `777` mode, but was `{{ result.stat.mode }}`"
+      when: result.stat.mode != "0777"
