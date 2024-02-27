@@ -1,0 +1,13 @@
+- hosts: all
+  gather_facts: no
+  vars:
+    list: [3, 4, 1]
+    # BEGIN (write your solution here)
+    result: "{{ list | max }}"
+    # END
+
+  tasks:
+    - name: Check result
+      fail:
+        msg: 'Expected `4` but was `{{ result }}`'
+      when: result is not defined or result != '4'
