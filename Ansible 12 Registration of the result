@@ -1,0 +1,17 @@
+- hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: special task
+      command: echo 'hi'
+      # BEGIN (write your solution here)
+      register: result
+      # END
+
+    - name: 'Check result'
+      fail:
+        msg: 'Expected result is registered'
+      when: result is not defined
+
+    - debug:
+        var: result
