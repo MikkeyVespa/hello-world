@@ -1,0 +1,10 @@
+- hosts: all
+  # BEGIN (write your solution here)
+  gather_facts: no
+  # END
+
+  tasks:
+    - name: Check gather facts set to `no`
+      ansible.builtin.fail:
+        msg: 'Expected no but yes'
+      when: ansible_distribution is defined
