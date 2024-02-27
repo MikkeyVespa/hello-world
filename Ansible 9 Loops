@@ -1,0 +1,25 @@
+- hosts: all
+  gather_facts: no
+
+  vars:
+    users:
+      - one
+      - two
+      - three
+
+  tasks:
+    - name: Users list
+      ansible.builtin.user:
+        name: "{{ item }}"
+      # BEGIN (write your solution here)
+      loop: "{{ users }}"
+      # END
+      register: result
+
+    - name: Check users
+      ansible.builtin.fail:
+        msg: 'Exected users created'
+      when: (not result.msg == 'All items completed') or
+            (not result.results[0].item == 'one') or
+            (not result.results[1].item == 'two') or
+            (not result.results[2].item == 'three')
