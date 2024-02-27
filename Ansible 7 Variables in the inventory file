@@ -1,0 +1,23 @@
+[webservers]
+web1.hexlet.io
+
+[jobservers]
+job1.hexlet.io
+
+[webservers:vars]
+version=1
+# BEGIN (write your solution here)
+memcache_port=5000
+# END
+
+[jobservers:vars]
+# BEGIN (write your solution here)
+version=2
+redis_port=6390
+# END
+
+[all:vars]
+ansible_connection=local
+# BEGIN (write your solution here)
+database=postgresql
+# END
