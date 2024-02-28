@@ -1,0 +1,12 @@
+vault.yml
+database_host: localhost
+database_port : 5432
+database_user: lannister
+database_name: lannister
+database_password: secret
+
+vault-password
+test
+
+// чтобы зашифровать данные вводим команду
+ ansible-vault encrypt group_vars/db/vault.yml --vault-password-file vault-password
