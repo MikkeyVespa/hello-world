@@ -1,0 +1,17 @@
+- hosts: all
+  # BEGIN (write your solution here)
+  roles:
+    - role: hexlet.timezone
+      vars:
+        timezone: America/New_York
+  # END
+
+  tasks:
+    - name: Get current timezone
+      set_fact:
+        current_timezone: "{{ lookup('file', '/etc/timezone') }}"
+
+    - name: Check result
+      fail:
+        msg: "Expected `America/New_York` but was `{{ current_timezone }}`"
+      when: current_timezone is not defined or current_timezone != 'America/New_York'
