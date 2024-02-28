@@ -1,0 +1,116 @@
+my decision:
+ - hosts: all
+  gather_facts: no
+  vars:
+    db_name: tirion
+    db_user: tirion
+  tasks:
+    - name: Get sql files list
+      find:
+        paths: sql
+        patterns: '*.sql'
+      register: sql_files
+
+    - name: Prepare file list
+      set_fact:
+        sql_files_paths: "{{ sql_files['files'] | sort(attribute='path') | map(attribute='path') }}"
+
+    # For debug
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: sql_files_paths
+        verbosity: 1
+
+    # BEGIN (write your solution here)
+    - name: Create a new db
+      community.postgresql.postgresql_db:
+        name: "{{ db_name }}"
+        owner: "{{ db_user }}"
+        login_user: "{{ db_user }}"
+
+
+
+    - name: Run query from SQL script
+      community.postgresql.postgresql_script:
+        db: "{{ db_name }}"
+        login_user: "{{ db_user }}"
+        path: "{{ item }}"
+      loop: "{{ sql_files_paths }}"
+    # END
+
+
+    - name: Select first 5 topics for check result
+      community.postgresql.postgresql_query:
+        login_user: "{{ db_user }}"
+        db: "{{ db_name }}"
+        query: SELECT * FROM topics LIMIT 5
+      register: select_topics_result
+
+    # For debug
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: select_topics_result
+        verbosity: 1
+
+    - name: Check result
+      fail:
+        msg: "Expected `5` but was `{{ select_topics_result['rowcount'] }}`"
+      when: select_topics_result is not defined or select_topics_result['rowcount'] != 5
+
+teacher's decision:
+  - hosts: all
+  gather_facts: no
+  vars:
+    db_name: tirion
+    db_user: tirion
+  tasks:
+    - name: Get sql files list
+      find:
+        paths: sql
+        patterns: '*.sql'
+      register: sql_files
+
+    - name: Prepare file list
+      set_fact:
+        sql_files_paths: "{{ sql_files['files'] | sort(attribute='path') | map(attribute='path') }}"
+
+    # For debug
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: sql_files_paths
+        verbosity: 1
+
+    # BEGIN
+    - name: Create DB
+      community.postgresql.postgresql_db:
+        login_user: tirion
+        name: tirion
+        owner: tirion
+        state: present
+
+    - name: Run queries from "{{ item }}"
+      community.postgresql.postgresql_script:
+        login_user: "{{ db_user }}"
+        db: "{{ db_name }}"
+        path: "{{ item }}"
+      with_items: "{{ sql_files_paths }}"
+    # END
+
+
+    - name: Select first 5 topics for check result
+      community.postgresql.postgresql_query:
+        login_user: "{{ db_user }}"
+        db: "{{ db_name }}"
+        query: SELECT * FROM topics LIMIT 5
+      register: select_topics_result
+
+    # For debug
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: select_topics_result
+        verbosity: 1
+
+    - name: Check result
+      fail:
+        msg: "Expected `5` but was `{{ select_topics_result['rowcount'] }}`"
+      when: select_topics_result is not defined or select_topics_result['rowcount'] != 5
