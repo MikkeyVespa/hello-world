@@ -1,0 +1,23 @@
+function breakTheWeb(strength, width) {
+    let counterForElph = 0;
+    let wigthForEleph = 1000;
+    let loopForRow = width;
+    let strengthWeb = strength;
+
+    if (loopForRow == 0) {
+        return counterForElph;
+    }
+
+    while (loopForRow > 0) {
+        for (let i = loopForRow; i > 0; i--) {
+            if (strengthWeb >= wigthForEleph) {
+                counterForElph++;
+                strengthWeb -= wigthForEleph;
+            }
+        }
+        loopForRow--;
+        wigthForEleph += 1000;
+    }
+
+    return counterForElph;
+}
