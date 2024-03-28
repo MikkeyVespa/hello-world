@@ -1,0 +1,141 @@
+my decision:
+index.js:
+import fs from 'fs/promises';
+// import _ from 'lodash';
+
+import makeServer from './server.js';
+
+export default async (port, callback = () => { }) => {
+  const data = await fs.readFile('phonebook.txt', 'utf-8');
+
+  // BEGIN (write your solution here)
+  const lines = data.trim().split('\n');
+
+  // Инициализируем объект для хранения данных
+  const usersById = {};
+
+  // Проходимся по каждой строке
+  lines.forEach((line) => {
+    // Проверяем, что строка не пустая
+    if (line.trim() !== '') {
+      // Разбиваем строку по пробелу на отдельные части и удаляем лишние пробелы
+      const [id, name, phone] = line.split('|').map((item) => item.trim());
+
+      // Заполняем объект usersById
+      usersById[id] = {
+        name,
+        phone,
+      };
+    }
+  });
+  // END
+
+  const server = makeServer(usersById);
+  server.listen(port, () => callback(server));
+};
+
+server.js:
+import http from 'http';
+
+export default (usersById) => http.createServer((request, response) => {
+  request.on('end', () => {
+    if (request.url === '/') {
+      const messages = [
+        'Welcome to The Phonebook',
+        `Records count: ${Object.keys(usersById).length}`,
+      ];
+      response.end(messages.join('\n'));
+    } else if (request.url.startsWith('/search')) {
+      // BEGIN (write your solution here)
+      if (!request.url.includes('?')) {
+        response.end(''); // Если параметра нет, возвращаем пустую строку
+        return;
+      }
+
+      const urlParams = new URLSearchParams(request.url.split('?')[1]);
+      const queryString = urlParams.get('q').toLowerCase(); // Получаем искомую подстроку и переводим в нижний регистр
+
+      let searchResult = '';
+
+      // Проходимся по всем записям и ищем совпадения
+      Object.keys(usersById).forEach((userId) => {
+        const user = usersById[userId];
+        const name = user.name.toLowerCase();
+
+        // Если подстрока найдена в имени или фамилии, добавляем запись в результат
+        if (name.includes(queryString)) {
+          searchResult += `${user.name}, ${user.phone}\n`;
+        }
+      });
+
+      // Если есть результаты поиска, отправляем их, иначе отправляем пустую строку
+      if (searchResult !== '') {
+        response.end(searchResult.trim());
+      } else {
+        response.end('');
+      }
+      // END
+    }
+  });
+
+  request.resume();
+});
+
+
+teacher's decision:
+index.js:
+import fs from 'fs/promises';
+import _ from 'lodash';
+
+import makeServer from './server.js';
+
+export default async (port, callback = () => {}) => {
+  const data = await fs.readFile('phonebook.txt', 'utf-8');
+
+  // BEGIN
+  const users = data
+    .trim()
+    .split('\n')
+    .map((value) => value.split('|').map((item) => item.trim()));
+  const usersIds = users.map(([id]) => id);
+  const usersData = users.map(([, name, phone]) => ({ name, phone }));
+  const usersById = _.zipObject(usersIds, usersData);
+  // END
+
+  const server = makeServer(usersById);
+  server.listen(port, () => callback(server));
+};
+
+server.js:
+import http from 'http';
+
+export default (usersById) => http.createServer((request, response) => {
+  request.on('end', () => {
+    if (request.url === '/') {
+      const messages = [
+        'Welcome to The Phonebook',
+        `Records count: ${Object.keys(usersById).length}`,
+      ];
+      response.end(messages.join('\n'));
+    } else if (request.url.startsWith('/search')) {
+      // BEGIN
+      const url = new URL(request.url, `http://${request.headers.host}`);
+      const q = url.searchParams.get('q');
+
+      if (!q) {
+        response.end();
+        return;
+      }
+
+      const normalizedSearch = q.trim().toLowerCase();
+      const result = Object.values(usersById)
+        .filter((user) => user.name.toLowerCase().includes(normalizedSearch))
+        .map((user) => `${user.name}, ${user.phone}`)
+        .join('\n');
+      response.end(result);
+      // END
+    }
+  });
+
+  request.resume();
+});
