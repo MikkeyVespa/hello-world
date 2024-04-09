@@ -1,0 +1,122 @@
+// @ts-check
+
+import Express from 'express';
+import bodyParser from 'body-parser';
+
+import Post from './entities/Post.js';
+
+const posts = [
+  new Post('hello', 'how are you?'),
+  new Post('nodejs', 'story about nodejs'),
+];
+
+export default () => {
+  const app = new Express();
+  app.set('view engine', 'pug');
+  app.use('/assets', Express.static(process.env.NODE_PATH.split(':')[0]));
+  app.use(bodyParser.urlencoded({ extended: false }));
+
+  app.get('/', (req, res) => {
+    res.render('index');
+  });
+
+  // BEGIN (write your solution here)
+  app.get('/posts/new', (req, res) => {
+    res.render('posts/new');
+  });
+
+  app.get('/posts', (req, res) => {
+    res.render('posts/index', { posts });
+  });
+
+  app.post('/posts', (req, res) => {
+    const { title, body } = req.body;
+    if (!title || !body) {
+      res.status(422).render('posts/new', { error: 'Title and body are required.', title, body });
+    } else {
+      const newPost = new Post(title, body);
+      posts.push(newPost);
+      res.redirect(`/posts/${posts.length}`);
+    }
+  });
+
+  app.get('/posts/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const post = posts[id - 1];
+    if (!post) {
+      res.status(404).send('Post not found');
+    } else {
+      res.render('posts/show', { post });
+    }
+  });
+  // END
+
+  return app;
+};
+
+// @ts-check
+// BEGIN (write your solution here)
+export default class Post {
+  constructor(id, title, body) {
+    this.id = id;
+    this.title = title;
+    this.body = body;
+  }
+}
+// END
+
+extends ../layouts/app.pug
+
+block content
+  div
+    a(href='/') Main page
+  // <table class="table">
+  //   <tbody>
+  //     <tr><th>Title</th></tr>
+  //     <tr><td><a href="/posts/1">hello</a></td></tr>
+  //     <tr><td><a href="/posts/2">nodejs</a></td></tr>
+  //     <tr><td><a href="/posts/3">asdfa</a></td></tr>
+  //     <tr><td><a href="/posts/4">111</a></td></tr>
+  //   </tbody>
+  // </table>
+
+  // BEGIN (write your solution here)
+  table.table
+    tbody
+      each post in posts
+        tr
+          td
+            a(href=`/posts/${post.id}`)= post.title
+  // END
+
+extends ../layouts/app.pug
+
+block content
+  // <form action="/posts" method="post">
+  //   <div><label>Title<sup>*</sup></label><input name="title"></div>
+  //   <div><label>Body<sup>*</sup></label><textarea rows="10" name="body"></textarea></div>
+  //   <input type="submit" value="Save">
+  //  </form>
+
+  // BEGIN (write your solution here)
+  form(action="/posts" method="post")
+    if error
+      div.error= error
+    div
+      label Title
+      input(type="text" value=title)
+    div
+      label Body
+      textarea(name="body" rows="10")= body
+    input(type="submit" value="Save")  
+  // END
+
+extends ../layouts/app.pug
+
+block content
+  div
+    a(href='/') Main page
+  // BEGIN (write your solution here)
+  h1= post.title
+  p= post.body
+  // END
